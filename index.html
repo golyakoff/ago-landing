@@ -224,6 +224,10 @@
     letter-spacing:-0.01em;
     margin-top:18px;
   }
+  .hero h1 .h1-lead{
+    display:inline-block;
+    margin-bottom:0.16em;
+  }
   .hero .lede{
     margin-top:20px;
     font-size:18px;
@@ -686,7 +690,7 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Live on reserve-me.ru right now</span></span>
-        <h1 data-i18n-html="hero.title">One script tag.<br>A real conversation<br>on your site.</h1>
+        <h1 data-i18n-html="hero.title"><span class="h1-lead">One script tag</span><br>A real conversation<br>on your site</h1>
         <p class="lede" data-i18n="hero.lede">AGO Chat drops a chat widget onto any page. A visitor asks a question — your team answers instantly. Every conversation automatically routes to the next free operator, with history and files right there in every open tab.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#demos" data-i18n="hero.cta1">Open a live demo shop</a>
@@ -837,18 +841,6 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section>
-    <div class="wrap">
-      <div class="cta-band on-brand">
-        <h2 data-i18n="final.title">See it, don't just read about it.</h2>
-        <div class="ctas">
-          <a class="btn btn-on-brand" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="final.cta1">Open Demo Shop One ↗</a>
-          <a class="btn btn-outline-on-brand" href="https://demo-shop2.reserve-me.ru" target="_blank" rel="noopener" data-i18n="final.cta2">Open Demo Shop Two ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </main>
 
@@ -885,7 +877,7 @@
     en: {
       'nav.how':'How it works','nav.demos':'Live demos','nav.tech':'Under the hood','nav.cta':'Try it live',
       'hero.eyebrow':'Live on reserve-me.ru right now',
-      'hero.title':'One script tag.<br>A real conversation<br>on your site.',
+      'hero.title':'<span class="h1-lead">One script tag</span><br>A real conversation<br>on your site',
       'hero.lede':"AGO Chat drops a chat widget onto any page. A visitor asks a question — your team answers instantly. Every conversation automatically routes to the next free operator, with history and files right there in every open tab.",
       'hero.cta1':'Open a live demo shop','hero.cta2':'See how it works',
       'hero.chip1':'Real-time delivery','hero.chip2':'Multi-tenant by design','hero.chip3':'File attachments',
@@ -911,7 +903,6 @@
       'tech.item2.title':'Multi-tenant by design','tech.item2.body':'Every site is its own tenant, enforced end to end — not a filter applied after the fact.',
       'tech.item3.title':"Reconnects don't lose messages",'tech.item3.body':'Drop your connection mid-conversation and reconnect — nothing already sent goes missing.',
       'tech.item4.title':'Attachments included','tech.item4.body':'Files move through direct, presigned uploads — never proxied through the chat servers themselves.',
-      'final.title':"See it, don't just read about it.",'final.cta1':'Open Demo Shop One ↗','final.cta2':'Open Demo Shop Two ↗',
       'footer.tagline':'Embeddable live chat for real conversations — real-time, multi-tenant, self-hosted.',
       'footer.login':'Operator login ↗','footer.copy':'© 2026 AGO Chat',
       'copy.copied':'Copied','copy.manual':'Select & copy manually'
@@ -919,7 +910,7 @@
     ru: {
       'nav.how':'Как это работает','nav.demos':'Живые демо','nav.tech':'Под капотом','nav.cta':'Попробовать',
       'hero.eyebrow':'Работает на reserve-me.ru прямо сейчас',
-      'hero.title':'Единственный скрипт.<br>Живой диалог<br>на вашем сайте.',
+      'hero.title':'<span class="h1-lead">Единственный скрипт</span><br>Живой диалог<br>на вашем сайте',
       'hero.lede':'AGO Chat добавляет чат-виджет на любую страницу. Посетитель задаёт вопрос — ваша команда операторов мгновенно отвечает. Диалог автоматически попадает к самому свободному оператору, а история переписки и файлы всегда под рукой в любой вкладке.',
       'hero.cta1':'Открыть демо-магазин','hero.cta2':'Как это работает',
       'hero.chip1':'Доставка в реальном времени','hero.chip2':'Мультитенантность по архитектуре','hero.chip3':'Файлы и вложения',
@@ -934,7 +925,7 @@
       'how.step1.title':'Добавьте скрипт','how.step1.body':'Один тег в любом месте страницы. Загружается небольшой виджет, изолированный от остального сайта.','how.step1.copy':'Скопировать код',
       'how.step2.title':'Посетители начинают писать','how.step2.body':'В углу появляется значок чата. Сообщения приходят в реальном времени — без перезагрузки страницы и задержек опроса.',
       'how.step3.title':'Команда отвечает','how.step3.body':'Операторы работают в одной консоли: история переписки, обмен файлами и статус присутствия синхронизированы во всех открытых вкладках.',
-      'demos.eyebrow':'Живые демо','demos.title':'Не верьте на слово — откройте сами.',
+      'demos.eyebrow':'Живые демо','demos.title':'Не верьте на слово — попробуйте сами',
       'demos.lede':'Два живых магазина, две команды операторов, полностью изолированные друг от друга — на одной платформе, в одно и то же время. Это настоящий продукт, а не скриншот.',
       'demos.card1.badge':'Тенант 01 · Светлая тема','demos.card1.title':'Демо-магазин 1','demos.card1.body':'Светлый, минималистичный магазин со своей темой виджета и своим входом для оператора — отдельный тенант от начала до конца.',
       'demos.card2.badge':'Тенант 02 · Тёмная + бирюза','demos.card2.title':'Демо-магазин 2','demos.card2.body':'Тёмный магазин с бирюзовым акцентом, специально оформлен непохожим на первый — та же платформа, полностью отдельный тенант.',
@@ -945,7 +936,6 @@
       'tech.item2.title':'Мультитенантность по архитектуре','tech.item2.body':'Каждый сайт — отдельный тенант, обеспечено на всех уровнях, а не фильтром постфактум.',
       'tech.item3.title':'Переподключение не теряет сообщения','tech.item3.body':'Разрыв соединения посреди разговора и переподключение — ничего из уже отправленного не потеряется.',
       'tech.item4.title':'Вложения включены','tech.item4.body':'Файлы идут напрямую через presigned-загрузку — никогда не проксируются через сами серверы чата.',
-      'final.title':'Увидьте сами, а не читайте о нас.','final.cta1':'Открыть Демо-магазин 1 ↗','final.cta2':'Открыть Демо-магазин 2 ↗',
       'footer.tagline':'Встраиваемый живой чат для настоящих диалогов — реальное время, мультитенантность, свой сервер.',
       'footer.login':'Вход для оператора ↗','footer.copy':'© 2026 AGO Chat',
       'copy.copied':'Скопировано','copy.manual':'Скопируйте вручную'
