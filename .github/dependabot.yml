@@ -1,0 +1,24 @@
+# 17-04. Schedule: weekly, Monday 06:00 UTC - matches the rest of the project's cadence (ago-chat's
+# credential-expiry.yml).
+#
+# No npm entry: this repository has no package.json at all (Dockerfile's own header - "no build
+# step: no bundler, no framework, everything inline"). The single index.html has no dependencies of
+# its own to track.
+version: 2
+updates:
+  # Dockerfile (root): nginx:1.27-alpine-slim, the only FROM line in the file.
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
