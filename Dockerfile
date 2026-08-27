@@ -13,7 +13,7 @@
 # nginx's own "-alpine-slim" variant - the closest analogue to ago-chat's Chiseled-image preference
 # that actually exists for nginx: official image, not a bespoke build, with the dynamic modules this
 # static-file-only container never uses stripped out.
-FROM nginx:1.27-alpine-slim
+FROM nginx:1.31-alpine-slim
 # The commit this image is built from (`15-07`). Defaults to "unknown" rather than failing the
 # build: a local `docker build` for a quick check is a legitimate thing to do, and it should say
 # "unknown" out loud rather than lie or refuse.
