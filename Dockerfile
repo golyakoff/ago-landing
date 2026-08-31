@@ -25,6 +25,9 @@ LABEL org.opencontainers.image.source="https://github.com/golyakoff/ago-landing"
       org.opencontainers.image.description="AGO Platform landing page" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.revision="${GIT_COMMIT}"
+# `15-08`: without this, nginx's own stock config sends no Cache-Control at all - see nginx.conf's
+# own header comment for the incident that found it.
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html
 # `15-07`: the commit as a file the running container serves, in the same shape as ago-console's and
 # ago-widget's, so smoke.sh and deploy.sh have one question to ask and one answer to parse -
