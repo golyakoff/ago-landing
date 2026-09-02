@@ -454,7 +454,18 @@
     font-size:11.5px;
     line-height:1.6;
     overflow-x:auto;
-    white-space:pre;
+    /* `adr/0092`: was `pre`. Measured in a real browser at 375x812 rather than eyeballed - with
+       `pre` the chip is intrinsically 463px wide, and `overflow-x:auto` does not save the page,
+       because a block that wide still widens its ancestors: the document scrolled to 537px against
+       a 375px viewport, so the whole landing page slid sideways.
+
+       It was already doing that before this change (447px, with the shorter URL), so this is a
+       pre-existing defect - but the longer real widget URL made it 90px worse, which makes it this
+       change's to fix rather than somebody else's to inherit. `pre-wrap` keeps the line break the
+       snippet is authored with while letting the long `src` wrap; `anywhere` is what actually
+       breaks a URL, since it has no spaces to break at. */
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
     position:relative;
   }
   .code-chip .tag{color:#8f8ac9;}
@@ -744,7 +755,17 @@
           <span class="step-num">01</span>
           <h3 data-i18n="how.step1.title">Add the script</h3>
           <p data-i18n="how.step1.body">One tag, dropped anywhere in your page. It loads a small widget, isolated from the rest of your site.</p>
-          <div class="code-chip">&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="val">"https://chat.reserve-me.ru/widget.js"</span>
+          <!-- `adr/0092`: the real widget URL, at last. This box handed out
+               `https://chat.reserve-me.ru/widget.js` for weeks - a 404, under a filename that never
+               existed anywhere (the file is `ago-chat.js`). Nobody noticed, because nothing asked;
+               `ago-deploy/k8s/smoke.sh` now does, and asserts the content *type* rather than a 200,
+               since an SPA catch-all answers 200 for any path.
+
+               THIS STRING EXISTS TWICE. The markup below is what a visitor reads; `agoCopySnippet`
+               near the bottom of this file holds the copy the button puts on their clipboard. They
+               must match, and nothing enforces it - so change both, and the check is to strip the
+               spans from this one and compare. -->
+          <div class="code-chip">&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="val">"https://chat-api.reserve-me.ru/widget/ago-chat.js"</span>
   <span class="attr">data-site</span>=<span class="val">"your-site-id"</span> <span class="attr">async</span>&gt;&lt;/<span class="tag">script</span>&gt;</div>
           <button class="copy-btn" type="button" onclick="agoCopySnippet(this)" data-i18n="how.step1.copy">Copy snippet</button>
         </div>
@@ -973,7 +994,7 @@
   })();
 
   function agoCopySnippet(btn){
-    var text = '<script src="https://chat.reserve-me.ru/widget.js" data-site="your-site-id" async><' + '/script>';
+    var text = '<script src="https://chat-api.reserve-me.ru/widget/ago-chat.js" data-site="your-site-id" async><' + '/script>';
     var lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'ru';
     var dict = AGO_I18N[lang];
     var done = function(){
