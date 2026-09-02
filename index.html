@@ -756,8 +756,11 @@
           <h3 data-i18n="how.step1.title">Add the script</h3>
           <p data-i18n="how.step1.body">One tag, dropped anywhere in your page. It loads a small widget, isolated from the rest of your site.</p>
           <!-- `adr/0092`: the real widget URL, at last. This box handed out
-               `https://chat.reserve-me.ru/widget.js` for weeks - a 404, under a filename that never
-               existed anywhere (the file is `ago-chat.js`). Nobody noticed, because nothing asked;
+               a dead URL on the old `chat.` host for weeks - a 404, under a filename that
+               never existed anywhere (the file is `ago-chat.js`). The dead address is deliberately
+               not written out here: this comment ships to every visitor's browser, and a literal
+               copy of it would trip any grep looking for the broken snippet - including the one
+               that would be checking whether this very page was fixed. Nobody noticed, because nothing asked;
                `ago-deploy/k8s/smoke.sh` now does, and asserts the content *type* rather than a 200,
                since an SPA catch-all answers 200 for any path.
 
