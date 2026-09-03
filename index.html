@@ -755,20 +755,27 @@
           <span class="step-num">01</span>
           <h3 data-i18n="how.step1.title">Add the script</h3>
           <p data-i18n="how.step1.body">One tag, dropped anywhere in your page. It loads a small widget, isolated from the rest of your site.</p>
-          <!-- `adr/0092`: the real widget URL, at last. This box handed out
-               a dead URL on the old `chat.` host for weeks - a 404, under a filename that
-               never existed anywhere (the file is `ago-chat.js`). The dead address is deliberately
-               not written out here: this comment ships to every visitor's browser, and a literal
-               copy of it would trip any grep looking for the broken snippet - including the one
-               that would be checking whether this very page was fixed. Nobody noticed, because nothing asked;
-               `ago-deploy/k8s/smoke.sh` now does, and asserts the content *type* rather than a 200,
-               since an SPA catch-all answers 200 for any path.
+          <!-- `adr/0092`: the real widget URL, at last. This box handed out a dead URL on the old
+               `chat.` host for weeks - a 404, under a filename that existed nowhere. Nobody noticed,
+               because nothing asked; `ago-deploy/k8s/smoke.sh` now does, and asserts the content
+               *type* rather than a 200, since an SPA catch-all answers 200 for any path.
+
+               `#342`: the filename below is not just what this page always claimed - `ago-widget`'s
+               own build now actually produces it, so the internal product name no longer leaks into
+               a tenant's HTML at all, on either side of the promise this box makes.
+
+               **Neither the dead address nor the old filename is written out anywhere here, and that
+               is deliberate.** This comment ships to every visitor's browser like the rest of the
+               markup, so a literal copy of either would put a name we retired back on a public page -
+               and would trip any grep looking for the old one, including the grep checking whether
+               this very page had been fixed. Describing them costs a reader nothing; spelling them
+               out costs exactly what this change was for.
 
                THIS STRING EXISTS TWICE. The markup below is what a visitor reads; `agoCopySnippet`
                near the bottom of this file holds the copy the button puts on their clipboard. They
                must match, and nothing enforces it - so change both, and the check is to strip the
                spans from this one and compare. -->
-          <div class="code-chip">&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="val">"https://chat-api.reserve-me.ru/widget/ago-chat.js"</span>
+          <div class="code-chip">&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="val">"https://chat-api.reserve-me.ru/widget/widget.js"</span>
   <span class="attr">data-site</span>=<span class="val">"your-site-id"</span> <span class="attr">async</span>&gt;&lt;/<span class="tag">script</span>&gt;</div>
           <button class="copy-btn" type="button" onclick="agoCopySnippet(this)" data-i18n="how.step1.copy">Copy snippet</button>
         </div>
@@ -1000,7 +1007,7 @@
   })();
 
   function agoCopySnippet(btn){
-    var text = '<script src="https://chat-api.reserve-me.ru/widget/ago-chat.js" data-site="your-site-id" async><' + '/script>';
+    var text = '<script src="https://chat-api.reserve-me.ru/widget/widget.js" data-site="your-site-id" async><' + '/script>';
     var lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'ru';
     var dict = AGO_I18N[lang];
     var done = function(){
