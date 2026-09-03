@@ -882,12 +882,15 @@
         <a href="#how" data-i18n="nav.how">How it works</a>
         <a href="#demos" data-i18n="nav.demos">Live demos</a>
         <a href="#tech" data-i18n="nav.tech">Under the hood</a>
-        <a href="https://console.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Operator login ↗</a>
+        <!-- `adr/0091` step 3: the console moved to the bare product name. `console.` is retired, not
+             merely aliased, so this link had to move with it or become a dead button on the one page
+             a prospective customer reads. -->
+        <a href="https://chat.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Operator login ↗</a>
       </nav>
     </div>
     <div class="footer-bottom">
       <span data-i18n="footer.copy">© 2026 AGO Chat</span>
-      <span>chat.reserve-me.ru · console.reserve-me.ru · auth.reserve-me.ru</span>
+      <span>chat.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru</span>
       <span class="lang-switch" role="group" aria-label="Language">
         <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
         <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
