@@ -1,0 +1,14 @@
+[
+    {
+        "price_key": "seat-base",
+        "amount_rub": 490.0,
+        "version": "v1",
+        "published_at": "2026-09-10T00:00:00+00:00"
+    },
+    {
+        "price_key": "seat-extra",
+        "amount_rub": 200.0,
+        "version": "v1",
+        "published_at": "2026-09-10T00:00:00+00:00"
+    }
+]
