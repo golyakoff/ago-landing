@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AGO Chat pricing - what a free account includes, what is priced per unit, and what is not priced yet.">
+<!-- Translated like any other string: `agoApplyLang` writes into every `data-i18n` element, and for
+     `<title>` that is `document.title` itself, so the browser tab follows the language switch too. -->
+<title data-i18n="pricingpage.doctitle">Pricing — AGO Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- The full price list, and the only page in this repository whose entire job is to be checkable.
+     Every ₽ figure below is read at runtime out of `prices.json` - the snapshot ago-chat's own
+     tools/update-landing-prices-from-db.sh takes of what the product has actually published. Nothing
+     here stores a price, rounds one, or fills a gap with an example. Where a price does not exist,
+     the row says "no published price" in the reader's own language and stops, which is the whole
+     reason this page can claim in its own lede to be the real thing. -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="brand-mark" href="index.html">
+      <span class="glyph">A</span>
+      <span class="word">AGO Chat</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#how" data-i18n="nav.how">How it works</a>
+      <a href="index.html#demos" data-i18n="nav.demos">Live demos</a>
+      <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="index.html#demos" data-i18n="nav.cta">Try it live</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section style="padding-bottom:40px;">
+    <div class="wrap">
+      <div class="section-head" style="max-width:680px;">
+        <a class="back-link" href="index.html" data-i18n="pricingpage.back">← Back to the main page</a>
+        <h2 style="margin-top:20px;" data-i18n="pricingpage.title">What's free, what's paid, and what isn't priced yet.</h2>
+        <p class="lede page-lede" data-i18n="pricingpage.lede">Every rouble figure on this page is a price the product itself has published — not a rounded example, and not a plan we intend to charge one day. Where there is no published price, this page says so instead of guessing.</p>
+      </div>
+
+      <!-- 1. The only difference that actually decides anything: how many people can work in it. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head">
+          <h3 data-i18n="pricingpage.compare.title">Free account vs paid account</h3>
+          <p data-i18n="pricingpage.compare.body">The difference is how many people can work in it. The chat itself — the widget, real-time delivery, file attachments — is the same product on both.</p>
+        </div>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th data-i18n="pricingpage.compare.col1"></th>
+                <th data-i18n="pricingpage.compare.col2">Free</th>
+                <th data-i18n="pricingpage.compare.col3">Paid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th data-i18n="pricingpage.compare.seats">Operator seats</th>
+                <td data-i18n="pricingpage.compare.seats.free">2</td>
+                <td data-i18n="pricingpage.compare.seats.paid">2 – 5</td>
+              </tr>
+              <tr>
+                <th data-i18n="pricingpage.compare.admins">Administrators</th>
+                <td data-i18n="pricingpage.compare.admins.free">1</td>
+                <td data-i18n="pricingpage.compare.admins.paid">2 included</td>
+              </tr>
+              <tr>
+                <th data-i18n="pricingpage.compare.widget">Widget, real-time delivery, attachments</th>
+                <td data-i18n="pricingpage.compare.widget.both">Included</td>
+                <td data-i18n="pricingpage.compare.widget.both">Included</td>
+              </tr>
+              <tr>
+                <th data-i18n="pricingpage.compare.price">Monthly price</th>
+                <td class="amount"><span data-i18n="pricing.free.amount">₽0</span><span data-i18n="pricing.permonth">/mo</span></td>
+                <td class="amount" data-price-row="seat-base">
+                  <span data-price-only data-i18n="pricing.from">from</span>
+                  <span data-price="seat-base" data-price-period></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2. The published prices themselves - two of them, plus the one that is real and unpriced. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head">
+          <h3 data-i18n="pricingpage.units.title">What is priced, per unit</h3>
+          <p data-i18n="pricingpage.units.body">Two published prices, and one thing that is real in the product but has no published price yet.</p>
+        </div>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th data-i18n="pricingpage.units.col1">Item</th>
+                <th data-i18n="pricingpage.units.col2">Price</th>
+                <th data-i18n="pricingpage.units.col3">What it covers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th data-i18n="pricingpage.units.base">Base price</th>
+                <td class="amount" data-price="seat-base" data-price-period></td>
+                <td data-i18n="pricingpage.units.base.note">Covers the account and its first 3 operator seats.</td>
+              </tr>
+              <tr>
+                <th data-i18n="pricingpage.units.extra">Each operator seat past the third</th>
+                <td class="amount" data-price="seat-extra" data-price-period></td>
+                <td data-i18n="pricingpage.units.extra.note">Charged once per seat, up to 5 seats in total.</td>
+              </tr>
+              <!-- `admin-extra` is a registered key in ago-chat with no published version yet. It is
+                   correctly absent from prices.json rather than present as zero, so this cell falls
+                   through to the same "no published price" text every other missing figure gets. -->
+              <tr class="is-pending">
+                <th data-i18n="pricingpage.units.admin">Each administrator past the second</th>
+                <td class="amount" data-price="admin-extra" data-price-period></td>
+                <td data-i18n="pricingpage.units.admin.note">A real thing you can buy inside the product — the published price for it is not out yet, so this page will not print one. Ask us and we will tell you.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. The same two prices, added up. Not a third source of numbers - the arithmetic is the
+              rule the product itself applies (the base covers three seats, each further seat adds
+              the per-seat price once), done in the browser from the two figures above. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head">
+          <h3 data-i18n="pricingpage.ladder.title">What a month costs, by seat count</h3>
+          <p data-i18n="pricingpage.ladder.body">Not a second price list — these are the two prices above, added up. The base price covers three seats; every seat past the third adds the per-seat price once.</p>
+        </div>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th data-i18n="pricingpage.ladder.col1">Operator seats</th>
+                <th data-i18n="pricingpage.ladder.col2">Per month</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th>2</th><td class="amount" data-price-seats="2"></td></tr>
+              <tr><th>3</th><td class="amount" data-price-seats="3"></td></tr>
+              <tr><th>4</th><td class="amount" data-price-seats="4"></td></tr>
+              <tr><th>5</th><td class="amount" data-price-seats="5"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. Named rather than hidden. Neither of these has a priced key in the product at all yet -
+              there is nothing here to publish a price for, which is a different state from the
+              administrator row above, and the wording keeps the two apart. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head">
+          <h3 data-i18n="pricingpage.soon.title">Not priced, because not built</h3>
+          <p data-i18n="pricingpage.soon.body">Named here rather than left off the page, so you can see what is coming and what it is not.</p>
+        </div>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th data-i18n="pricingpage.soon.col1">What</th>
+                <th data-i18n="pricingpage.soon.col2">Status</th>
+                <th data-i18n="pricingpage.soon.col3">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="is-pending">
+                <th data-i18n="pricingpage.soon.channels">More incoming channels</th>
+                <td class="amount unpriced" data-i18n="pricingpage.soon.status">In development</td>
+                <td data-i18n="pricingpage.soon.channels.note">Telegram, WhatsApp, SMS and others, arriving in the same operator console as the website chat.</td>
+              </tr>
+              <tr class="is-pending">
+                <th data-i18n="pricingpage.soon.calendar">AGO Calendar</th>
+                <td class="amount unpriced" data-i18n="pricingpage.soon.status">In development</td>
+                <td data-i18n="pricingpage.soon.calendar.note">Booking and scheduling, as a second product on the same account.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="fineprint" data-i18n="pricingpage.fineprint">All amounts are in roubles, per month, per account. This page reads the prices the product has published; if a figure here is missing, it is because nothing has been published for it — not because it is free.</p>
+      <!-- Hidden by `agoRenderPrices` when there is no snapshot to date. -->
+      <p class="fineprint" style="margin-top:8px;" data-price-updated hidden></p>
+
+      <!-- The same band as the landing page's own pricing section, word for word through the shared
+           dictionary: whichever page a reader lands on first, "register first, pay inside" is the
+           sentence they get, and there is no buy button on either. -->
+      <div class="price-path">
+        <div>
+          <h3 data-i18n="pricing.path.title">How you actually start</h3>
+          <p data-i18n="pricing.path.body">There is no buy button on this page, deliberately. You register first; then, inside the product, you pick which capabilities to switch on and pay for exactly those, there. Want to look around before any of that? The demo shops hand out a private operator account on the spot — the button below opens one.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-on-brand" href="index.html#demos" data-i18n="pricing.cta.demo">Open a live demo</a>
+          <a class="btn btn-outline-on-brand" href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Operator login ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand-mark" href="index.html">
+          <span class="glyph">A</span>
+          <span class="word">AGO Chat</span>
+        </a>
+        <p class="footer-tagline" data-i18n="footer.tagline">Embeddable live chat for real conversations — real-time, multi-tenant, self-hosted.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html#how" data-i18n="nav.how">How it works</a>
+        <a href="index.html#demos" data-i18n="nav.demos">Live demos</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+        <a href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Operator login ↗</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.copy">© 2026 AGO Chat</span>
+      <span>office.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru</span>
+      <span class="lang-switch" role="group" aria-label="Language">
+        <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
+        <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+</body>
+</html>
