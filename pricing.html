@@ -122,6 +122,18 @@
                 <td class="amount" data-price="admin-extra" data-price-period></td>
                 <td data-i18n="pricingpage.units.admin.note">A real thing you can buy inside the product — the published price for it is not out yet, so this page will not print one. Ask us and we will tell you.</td>
               </tr>
+              <!-- `25-101`: `channel-addon` is the identical shape as `admin-extra` above - a real,
+                   registered key (ago-chat's own PricedResourceKeys.All) with no published version
+                   yet, so this row moved here out of the "not priced, because not built" table below
+                   rather than being added a second time: the key existing is exactly what separates
+                   "not priced yet" from "not built yet", and this row is now the former. One flat
+                   price for any connected channel, never one per channel kind (the product's own
+                   decision - see ChannelAddOnPricing's own remarks in ago-chat). -->
+              <tr class="is-pending">
+                <th data-i18n="pricingpage.units.channel">Each connected channel beyond the website widget</th>
+                <td class="amount" data-price="channel-addon" data-price-period></td>
+                <td data-i18n="pricingpage.units.channel.note">One flat price for any channel — Telegram, WhatsApp, SMS and others, arriving one at a time in the same operator console. The published price for it is not out yet, so this page will not print one. Ask us and we will tell you.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -171,11 +183,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="is-pending">
-                <th data-i18n="pricingpage.soon.channels">More incoming channels</th>
-                <td class="amount unpriced" data-i18n="pricingpage.soon.status">In development</td>
-                <td data-i18n="pricingpage.soon.channels.note">Telegram, WhatsApp, SMS and others, arriving in the same operator console as the website chat.</td>
-              </tr>
+              <!-- `25-101`: the channel row that used to live here moved up into "What is priced, per
+                   unit" - a real `channel-addon` key now exists in ago-chat's own PricedResourceKeys,
+                   so "not priced, because not built" stopped being true of it. See that table's own
+                   comment for the full reasoning. -->
               <tr class="is-pending">
                 <th data-i18n="pricingpage.soon.calendar">AGO Calendar</th>
                 <td class="amount unpriced" data-i18n="pricingpage.soon.status">In development</td>
