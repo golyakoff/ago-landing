@@ -246,11 +246,12 @@
                  hole in the middle of the line. -->
             <li><span><span data-i18n-html="pricing.paid.f2">Each seat beyond that, up to <b>5</b> in total —</span> <span class="price-inline" data-price="seat-extra" data-price-period></span></span></li>
             <li><span data-i18n-html="pricing.paid.f3"><b>2</b> administrators included</span></li>
-            <li class="pending"><span data-i18n="pricing.paid.f4">An extra administrator beyond those two — real, but not publicly priced yet. Ask us.</span></li>
-            <!-- `25-101`: the identical "pending" shape as f4 above, not a "soon" chip below - a real
-                 `channel-addon` key now exists in ago-chat's own PricedResourceKeys, so this moved out
-                 of "Not sold yet" the same way its twin row did on pricing.html. -->
-            <li class="pending"><span data-i18n="pricing.paid.f5">A connected channel beyond the widget — Telegram, MAX, VK, WhatsApp, Avito and email are already live, one flat price for any of them — real, but not publicly priced yet. Ask us.</span></li>
+            <!-- Real prices were published for both admin-extra (2026-09-14) and channel-addon
+                 (2026-09-15) - both moved off the "pending" static-text shape onto the identical
+                 two-span live-bound pattern f2 above already uses, rather than staying prose that
+                 could never show a real figure. -->
+            <li><span><span data-i18n-html="pricing.paid.f4">Each Administrator beyond the two included —</span> <span class="price-inline" data-price="admin-extra" data-price-period></span></span></li>
+            <li><span><span data-i18n-html="pricing.paid.f5">Each connected channel beyond the widget — Telegram, MAX, VK, WhatsApp, Avito and email are already live, one flat price for any —</span> <span class="price-inline" data-price="channel-addon" data-price-period></span></span></li>
           </ul>
         </div>
       </div>

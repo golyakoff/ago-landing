@@ -92,7 +92,7 @@
       <div class="price-table-wrap">
         <div class="price-table-head">
           <h3 data-i18n="pricingpage.units.title">What is priced, per unit</h3>
-          <p data-i18n="pricingpage.units.body">Two published prices, and one thing that is real in the product but has no published price yet.</p>
+          <p data-i18n="pricingpage.units.body">Every figure below is a price the product actually published - never a rounded example, never a plan for what it will charge someday.</p>
         </div>
         <div class="price-table-scroll">
           <table class="price-table">
@@ -114,25 +114,26 @@
                 <td class="amount" data-price="seat-extra" data-price-period></td>
                 <td data-i18n="pricingpage.units.extra.note">Charged once per seat, up to 5 seats in total.</td>
               </tr>
-              <!-- `admin-extra` is a registered key in ago-chat with no published version yet. It is
-                   correctly absent from prices.json rather than present as zero, so this cell falls
-                   through to the same "no published price" text every other missing figure gets. -->
-              <tr class="is-pending">
+              <!-- `admin-extra` is a registered key in ago-chat, and a real price was published for it
+                   2026-09-14 - the row is no longer `is-pending`, and its note no longer claims there
+                   is nothing to print. `data-price="admin-extra"` itself has always been correct either
+                   way: it already falls through to the shared "no published price" text on its own
+                   whenever prices.json lacks the key, so nothing about the price cell changed here. -->
+              <tr>
                 <th data-i18n="pricingpage.units.admin">Each administrator past the second</th>
                 <td class="amount" data-price="admin-extra" data-price-period></td>
-                <td data-i18n="pricingpage.units.admin.note">A real thing you can buy inside the product — the published price for it is not out yet, so this page will not print one. Ask us and we will tell you.</td>
+                <td data-i18n="pricingpage.units.admin.note">Charged for every Administrator beyond the two a paid plan already includes.</td>
               </tr>
-              <!-- `25-101`: `channel-addon` is the identical shape as `admin-extra` above - a real,
-                   registered key (ago-chat's own PricedResourceKeys.All) with no published version
-                   yet, so this row moved here out of the "not priced, because not built" table below
-                   rather than being added a second time: the key existing is exactly what separates
-                   "not priced yet" from "not built yet", and this row is now the former. One flat
-                   price for any connected channel, never one per channel kind (the product's own
+              <!-- `25-101`: `channel-addon`, the identical shape as `admin-extra` above - a real key,
+                   moved here out of the "not priced, because not built" table below once it existed.
+                   A real price was published for it 2026-09-15 - `is-pending` and the "not out yet"
+                   note are gone, for the identical reason admin-extra's own note just lost them. One
+                   flat price for any connected channel, never one per channel kind (the product's own
                    decision - see ChannelAddOnPricing's own remarks in ago-chat). -->
-              <tr class="is-pending">
+              <tr>
                 <th data-i18n="pricingpage.units.channel">Each connected channel beyond the website widget</th>
                 <td class="amount" data-price="channel-addon" data-price-period></td>
-                <td data-i18n="pricingpage.units.channel.note">One flat price for any channel — Telegram, MAX, VK, WhatsApp, Avito and email are already live, in the same operator console as the website chat. The published price for it is not out yet, so this page will not print one. Ask us and we will tell you.</td>
+                <td data-i18n="pricingpage.units.channel.note">One flat price for any channel — Telegram, MAX, VK, WhatsApp, Avito and email are already live, in the same operator console as the website chat.</td>
               </tr>
             </tbody>
           </table>
