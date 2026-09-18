@@ -304,3 +304,19 @@ footer{border-top:1px solid var(--line-soft);margin-top:44px;padding:28px 0 52px
 .price-path h3{font-size:20px;margin-bottom:8px;}
 .price-path p{font-size:14.5px;color:var(--ink-soft);}
 .price-path .ctas{display:flex;flex-direction:column;gap:10px;}
+
+/* The operator-price rule (pricing.html). Replaced a four-row ladder whose first two rows carried
+   the same figure - arithmetically correct, and read as a typo. Stating the rule and showing one
+   worked sum says the same thing without that trap, in a third of the vertical space. */
+.price-rule{padding:6px 24px 24px;}
+.rule-line{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);}
+.rule-line:last-of-type{border-bottom:0;}
+.rule-n{flex:0 0 auto;min-width:3.6rem;font-family:'Onest',sans-serif;font-weight:800;font-size:26px;
+  line-height:1;color:var(--blue);font-variant-numeric:tabular-nums;}
+.rule-what{flex:1;color:var(--ink-soft);font-size:15px;}
+.rule-line .amount{flex:0 0 auto;font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;
+  font-weight:600;font-size:16px;white-space:nowrap;}
+.rule-plus{color:var(--ink-faint);}
+.rule-example{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);
+  font-size:14.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;}
+.rule-example .amount{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;}
