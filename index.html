@@ -3,334 +3,317 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AGO Chat - embeddable live chat for your site. Real-time delivery, real multi-tenant isolation.">
+<meta name="description" content="AGO Chat — чат для сайта и мессенджеров. Семь каналов в одном окне, запись к мастерам, отчёты. От 490 ₽ в месяц, два оператора бесплатно.">
 <title>AGO Chat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- The front page, rebuilt around the one question a visitor actually arrives with: what will this
+     cost me. The calculator in the hero answers it before any prose does, and every figure in it
+     comes out of `prices.json` at runtime (`home.js`) - this page hardcodes no price, the same rule
+     `pricing.html` already lives by. Where a price is unpublished the calculator says so rather than
+     quietly leaving it out of the sum. -->
 <header class="nav">
   <div class="wrap nav-row">
-    <a class="brand-mark" href="#top">
-      <span class="glyph">A</span>
-      <span class="word">AGO Chat</span>
-    </a>
-    <!-- "Under the hood" left this list when it stopped being a section (see `#tech` below). Three
-         links is what fits here at 900px in either language, and a reader deciding whether to use
-         this product wants the price before they want the architecture. The `#tech` id survives
-         anyway, so any link anyone already has still lands on the right block. -->
+    <a class="brand" href="#top"><span class="g">A</span>AGO Chat</a>
     <nav class="nav-links">
-      <a href="#how" data-i18n="nav.how">How it works</a>
-      <a href="#demos" data-i18n="nav.demos">Live demos</a>
-      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#calc" data-i18n="nav.pricing">Сколько стоит</a>
+      <a href="#what" data-i18n="nav.features">Возможности</a>
+      <a href="#widget" data-i18n="nav.widget">Виджет</a>
+      <a href="#adv" data-i18n="nav.advantages">Преимущества</a>
     </nav>
-    <a class="btn btn-primary btn-sm nav-cta" href="#demos" data-i18n="nav.cta">Try it live</a>
+    <button class="theme-toggle" type="button" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+      <span class="ms" id="themeIcon" aria-hidden="true">dark_mode</span>
+    </button>
+    <a class="btn btn-primary btn-sm" href="#calc" data-i18n="nav.cta">Начать бесплатно</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">Live on reserve-me.ru right now</span></span>
-        <h1 data-i18n-html="hero.title"><span class="h1-lead">One script tag</span><br>A real conversation<br>on your site</h1>
-        <p class="lede" data-i18n="hero.lede">AGO Chat drops a chat widget onto any page. A visitor asks a question — your team answers instantly. Every conversation automatically routes to the next free operator, with history and files right there in every open tab.</p>
+        <span class="kicker" data-i18n="home.kicker">Чат для сайта и мессенджеров</span>
+        <h1 data-i18n-html="home.title">Вся переписка с клиентами <em>от 490 ₽ в месяц</em></h1>
+        <p class="lede" data-i18n="home.lede">Семь каналов, запись к мастерам, отчёты и подсказки — в одном окне и в одном счёте. Никаких «свяжитесь с отделом продаж»: цена посчитана справа, всё включается в кабинете за минуту.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#demos" data-i18n="hero.cta1">Open a live demo shop</a>
-          <a class="btn btn-ghost" href="#how" data-i18n="hero.cta2">See how it works</a>
+          <a class="btn btn-primary" href="#calc" data-i18n="home.cta1">Посчитать свой тариф</a>
+          <a class="btn btn-ghost" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.cta2">Открыть живое демо ↗</a>
         </div>
-        <div class="trust-row">
-          <span class="chip"><span class="dot"></span><span data-i18n="hero.chip1">Real-time delivery</span></span>
-          <span class="chip"><span class="dot"></span><span data-i18n="hero.chip2">Multi-tenant by design</span></span>
-          <span class="chip"><span class="dot"></span><span data-i18n="hero.chip3">File attachments</span></span>
+        <div class="hero-facts">
+          <div class="fact"><div class="v num" data-i18n="home.fact1.v">0 ₽</div><div class="k" data-i18n="home.fact1.k">двое операторов навсегда</div></div>
+          <div class="fact"><div class="v num">7</div><div class="k" data-i18n="home.fact2.k">каналов в одном окне</div></div>
+          <div class="fact"><div class="v num">1</div><div class="k" data-i18n="home.fact3.k">строка кода на сайт</div></div>
         </div>
       </div>
 
-      <div class="widget-mock">
-        <div class="widget-window">
-          <div class="widget-header">
-            <span class="widget-avatar">A</span>
+      <!-- The calculator. Its arithmetic is a rule fixed in ago-chat's own Domain
+           (`SubscriptionTierBands`): the base price covers the first three seats, each seat past
+           that adds the per-seat price once. The rule is safe to restate here; the amounts it works
+           on are never written down in this repository. -->
+      <div class="calc" id="calc">
+        <div class="calc-head">
+          <span class="kicker" data-i18n="home.calc.kicker">Калькулятор</span>
+          <span class="unit" data-i18n="home.calc.unit">помесячно, в рублях</span>
+        </div>
+        <div class="calc-body">
+          <div>
+            <div class="ctl-label"><span data-i18n="home.calc.seats">Операторов отвечает</span><span class="val" id="seatsVal">3</span></div>
+            <input type="range" id="seats" min="1" max="5" step="1" value="3" aria-label="Операторов">
+          </div>
+          <div>
+            <div class="ctl-label"><span data-i18n="home.calc.admins">Администраторов</span><span class="val" id="admVal">2</span></div>
+            <input type="range" id="adm" min="1" max="4" step="1" value="2" aria-label="Администраторов">
+          </div>
+          <div>
+            <div class="ctl-label"><span data-i18n="home.calc.channels">Каналы сверх сайта</span><span class="val" id="chVal">2</span></div>
+            <div class="chgrid" id="chgrid">
+              <button class="chbtn" type="button" data-ch="MAX" aria-pressed="true"><span class="mk" style="background:linear-gradient(135deg,#8a4dff,#5b6bff)" aria-hidden="true">M</span>MAX</button>
+              <button class="chbtn" type="button" data-ch="ВКонтакте" aria-pressed="false"><span class="mk" style="background:#0077ff;font-size:8px" aria-hidden="true">VK</span>ВКонтакте</button>
+              <button class="chbtn" type="button" data-ch="Авито" aria-pressed="false"><span class="mk" style="background:#00aaff" aria-hidden="true">A</span>Авито</button>
+              <button class="chbtn" type="button" data-ch="Telegram" aria-pressed="true"><span class="mk round" style="background:#2aabee" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.3 5.1 3.9 11.1c-1 .4-1 1-.2 1.2l3.9 1.2 1.5 4.6c.2.5.3.7.7.7.3 0 .4-.1.6-.3l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.7l2.5-11.8c.2-1-.4-1.5-1.1-1.2zM8.9 13.9l8.4-5.3-6.9 6.3-.3 3.1-1.2-4.1z"></path></svg></span>Telegram</button>
+              <button class="chbtn" type="button" data-ch="WhatsApp" aria-pressed="false"><span class="mk round" style="background:#25d366" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 13.9c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.8 2.8 4.4 3.9 2.2.9 2.6.7 3.1.7.5 0 1.6-.6 1.8-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.5-.3z"></path></svg></span>WhatsApp</button>
+            </div>
+            <p class="calc-note" data-i18n="home.calc.included">Чат на сайте и почта включены в любой аккаунт, в том числе бесплатный.</p>
+          </div>
+        </div>
+        <div class="calc-out">
+          <div class="bill" id="bill"></div>
+          <div class="total">
             <div>
-              <strong>AGO Chat</strong>
-              <div class="widget-status"><span class="dot"></span><span data-i18n="widget.online">Online now</span></div>
+              <div class="lbl" data-i18n="home.calc.total">Итого в месяц</div>
+              <div class="amt num" id="total">—</div>
+            </div>
+            <a class="btn btn-primary btn-sm" href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.calc.cta">Завести аккаунт</a>
+          </div>
+          <p class="free-note" id="freeNote" hidden data-i18n="home.calc.freenote">Такой набор помещается в бесплатный аккаунт — платить не за что.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section id="what" style="padding-top:20px;">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker" data-i18n="home.what.kicker">Что входит в эти деньги</span>
+        <h2 data-i18n="home.what.title">Тариф меняет масштаб, а не возможности</h2>
+        <p class="lede" data-i18n="home.what.lede">Бесплатный и платный аккаунт отличаются числом людей, количеством подключённых каналов и глубиной хранения переписки: на бесплатном история доступна за ограниченный период. А карточки клиентов — самое ценное, что накапливается у бизнеса, — хранятся отдельно от переписки и остаются с вами даже на бесплатном тарифе.</p>
+      </div>
+      <div class="grid3">
+
+        <div class="cap">
+          <div class="ic"><span class="ms">alt_route</span></div>
+          <h3 data-i18n="home.cap1.t">Умная очередь</h3>
+          <p data-i18n="home.cap1.b">Диалог автоматически направляется к наиболее свободному оператору. Есть возможность передать диалог коллеге вместе с историей. Если диалог останется без внимания оператора продолжительное время, он сам вернётся в очередь.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">hub</span></div>
+          <h3 data-i18n="home.cap2.t">Единая история клиента</h3>
+          <p data-i18n="home.cap2.b">Возможность связывать различные источники сообщений одного клиента — например: Телеграм, Макс и почту. Сквозная история диалога.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">quickreply</span></div>
+          <h3 data-i18n="home.cap3.t">Шаблоны ответов</h3>
+          <p data-i18n="home.cap3.b">Отвечайте на частые вопросы в пару нажатий. Плюс горячие клавиши и уведомления, которые помогут эффективнее общаться и не пропускать сообщения клиентов.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">event_available</span></div>
+          <h3 data-i18n="home.cap4.t">Возможность записаться</h3>
+          <p data-i18n="home.cap4.b">Вы заводите мастера, формируете услуги и расписание — клиент записывается на услугу самостоятельно, не дожидаясь оператора.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">bedtime</span></div>
+          <h3 data-i18n="home.cap5.t">Автоответ вне рабочих часов</h3>
+          <p data-i18n="home.cap5.b">Клиент получает ответ даже во внерабочие часы оператора: автоответ, статью из базы знаний или обратный звонок в рабочие часы — по предоставленным контактам.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">monitoring</span></div>
+          <h3 data-i18n="home.cap6.t">Полезная аналитика</h3>
+          <p data-i18n="home.cap6.b">Статистика по каналам обращений, время первого ответа, пропущенные диалоги, нагрузка операторов, темы обращений, итоги разговора и конверсия.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">auto_awesome</span></div>
+          <h3 data-i18n="home.cap7.t">Подсказка ИИ</h3>
+          <p data-i18n="home.cap7.b">ИИ готовит черновик ответа и предлагает теги. Отправляет всегда человек — черновик физически не может уйти клиенту сам.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">sticky_note_2</span></div>
+          <h3 data-i18n="home.cap8.t">Заметки и теги</h3>
+          <p data-i18n="home.cap8.b">Операторы могут оставлять заметки, которые не видны клиенту: они позволяют сохранить предпочтения клиентов в непубличном формате.</p>
+        </div>
+
+        <div class="cap">
+          <div class="ic"><span class="ms">sync</span></div>
+          <h3 data-i18n="home.cap9.t">Устойчивая связь</h3>
+          <p data-i18n="home.cap9.b">Метро, лифт, перезагрузка страницы — разговор продолжается с того места, на котором оборвался, а отправленные сообщения доходят при возобновлении связи.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WIDGET -->
+  <section id="widget" style="padding-top:20px;">
+    <div class="wrap demo-split">
+      <div>
+        <span class="kicker" data-i18n="home.widget.kicker">На вашем сайте</span>
+        <h2 style="margin:14px 0 16px;" data-i18n="home.widget.title">Как это выглядит у покупателя?</h2>
+        <p class="lede" data-i18n="home.widget.lede">Виджет легко встроится в ваш дизайн — положение, цветовая палитра, приветственные тексты: всё настраивается!</p>
+        <ul class="ticks">
+          <li><span class="mk"><span class="ms">check</span></span><span data-i18n="home.widget.t1">Работает как на CMS, так и на собственном дизайнерском сайте</span></li>
+          <li><span class="mk"><span class="ms">check</span></span><span data-i18n="home.widget.t2">Позволяет обмениваться файлами: фото товара, накладная, скриншот ошибки</span></li>
+          <li><span class="mk"><span class="ms">check</span></span><span data-i18n="home.widget.t3">Прост в первичной настройке и интеграции</span></li>
+        </ul>
+        <div class="hero-ctas">
+          <a class="btn btn-ghost" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.widget.cta">Написать в живое демо ↗</a>
+        </div>
+      </div>
+      <div class="screen">
+        <div class="ago-root">
+          <div class="ago-panel" role="img" aria-label="Пример диалога в виджете AGO Chat">
+            <div class="ago-header">
+              <h1 data-i18n="home.mock.header">Напишите нам</h1>
+              <span class="ago-close" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"></path></svg></span>
+            </div>
+            <div class="ago-messages">
+              <div class="ago-message ago-message--operator" data-i18n="home.mock.m1">Здравствуйте! Подскажем по срокам и материалам.</div>
+              <div class="ago-message ago-message--visitor" data-i18n="home.mock.m2">Сколько делается кожаный ремень под пряжку с фото?</div>
+              <div class="ago-message ago-message--operator" data-i18n="home.mock.m3">Три рабочих дня. Пришлите фото пряжки — скажем точнее.</div>
+              <div class="ago-message ago-message--visitor"><span data-i18n="home.mock.m4">Держите</span><span class="ago-attachment-link">📎 pryazhka.jpg</span></div>
+              <div class="ago-message ago-message--operator"><span data-i18n="home.mock.m5">Отлично, вопросов по пряжке нет, выберите время, когда удобно забрать:</span>
+                <div class="ago-primitive">
+                  <div class="ago-primitive-title" data-i18n="home.mock.service">Примерка и выдача, 20 минут</div>
+                  <div class="ago-primitive-choices">
+                    <span class="ago-primitive-choice" data-i18n="home.mock.slot1">Чт, 14:00</span>
+                    <span class="ago-primitive-choice" data-i18n="home.mock.slot2">Чт, 17:30</span>
+                    <span class="ago-primitive-choice" data-i18n="home.mock.slot3">Пт, 11:00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="ago-module-chip" data-i18n="home.mock.book">Записаться</span>
+            <div class="ago-composer">
+              <div class="ago-composer-row">
+                <div class="ago-input" data-i18n="home.mock.placeholder">Введите сообщение…</div>
+                <span class="ago-send" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path></svg></span>
+              </div>
+              <div class="ago-composer-controls">
+                <span class="ago-attach" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M720-330q0 104-73 177T470-80q-104 0-177-73t-73-177v-370q0-75 52.5-127.5T400-880q75 0 127.5 52.5T580-700v350q0 46-32 78t-78 32q-46 0-78-32t-32-78v-370h80v370q0 13 8.5 21.5T470-320q13 0 21.5-8.5T500-350v-350q-1-42-29.5-71T400-800q-42 0-71 29t-29 71v370q-1 71 49 120.5T470-160q70 0 119-49.5T640-330v-390h80v390Z"></path></svg></span>
+                <span class="ago-emoji" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M620-520q25 0 42.5-17.5T680-580q0-25-17.5-42.5T620-640q-25 0-42.5 17.5T560-580q0 25 17.5 42.5T620-520Zm-280 0q25 0 42.5-17.5T400-580q0-25-17.5-42.5T340-640q-25 0-42.5 17.5T280-580q0 25 17.5 42.5T340-520Zm140 260q68 0 123.5-38.5T684-400h-66q-22 37-58.5 58.5T480-320q-43 0-79.5-21.5T342-400h-66q25 63 80.5 101.5T480-260Zm0 180q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z"></path></svg></span>
+                <span class="ago-save" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"></path></svg></span>
+              </div>
             </div>
           </div>
-          <div class="widget-body">
-            <div class="bubble bubble-op" data-i18n="widget.msg1">Hey! Thanks for reaching out — how can I help?</div>
-            <div class="bubble bubble-visitor" data-i18n="widget.msg2">Do you ship to Kazan?</div>
-            <div class="bubble bubble-op" data-i18n="widget.msg3">Yep, 2–3 business days. Want me to check a date for your order?</div>
-            <div class="bubble bubble-visitor"><span data-i18n="widget.msg4">Sure, here's my order</span><span class="bubble-file">📎 order-4471.pdf</span></div>
-            <div class="typing"><span></span><span></span><span></span></div>
-          </div>
-          <div class="widget-input">
-            <span class="widget-attach">📎</span>
-            <span class="widget-placeholder" data-i18n="widget.placeholder">Type a message…</span>
-            <span class="widget-send" data-i18n="widget.send">Send</span>
+          <div class="ago-launcher-row">
+            <span class="ago-toggle" aria-hidden="true"><svg viewBox="0 -960 960 960" width="1em" height="1em" fill="currentColor"><path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"></path></svg><span class="ago-unread-badge">1</span></span>
           </div>
         </div>
-        <div class="widget-launcher">💬<span class="launcher-badge">1</span></div>
+        <p class="screen-tag" data-i18n="home.widget.caption">Диалог может идти по нескольким каналам — карточка одна</p>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section id="how">
+  <!-- ADVANTAGES -->
+  <section id="adv" style="padding-top:20px;">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow" style="color:var(--brand-deep)" data-i18n="how.eyebrow">How it works</span>
-        <h2 data-i18n="how.title">Three steps. No plugin marketplace.</h2>
-        <p class="lede" data-i18n="how.lede">Nothing to install, nothing to provision by hand. The widget, the transport, and the console are all part of the same product.</p>
+      <div class="head">
+        <span class="kicker" data-i18n="home.adv.kicker">Наши преимущества</span>
+        <h2 data-i18n="home.adv.title">Что вы получаете сразу после регистрации</h2>
+        <p class="lede" data-i18n="home.adv.lede">Ничего докупать и доустанавливать не нужно: всё перечисленное работает с первого дня, на бесплатном аккаунте тоже.</p>
       </div>
 
-      <div class="steps">
-        <div class="step-card">
-          <span class="step-num">01</span>
-          <h3 data-i18n="how.step1.title">Add the script</h3>
-          <p data-i18n="how.step1.body">One tag, dropped anywhere in your page. It loads a small widget, isolated from the rest of your site.</p>
-          <!-- `adr/0092`: the real widget URL, at last. This box handed out a dead URL on the old
-               `chat.` host for weeks - a 404, under a filename that existed nowhere. Nobody noticed,
-               because nothing asked; `ago-deploy/k8s/smoke.sh` now does, and asserts the content
-               *type* rather than a 200, since an SPA catch-all answers 200 for any path.
-
-               `#342`: the filename below is not just what this page always claimed - `ago-widget`'s
-               own build now actually produces it, so the internal product name no longer leaks into
-               a tenant's HTML at all, on either side of the promise this box makes.
-
-               **Neither the dead address nor the old filename is written out anywhere here, and that
-               is deliberate.** This comment ships to every visitor's browser like the rest of the
-               markup, so a literal copy of either would put a name we retired back on a public page -
-               and would trip any grep looking for the old one, including the grep checking whether
-               this very page had been fixed. Describing them costs a reader nothing; spelling them
-               out costs exactly what this change was for.
-
-               THIS STRING EXISTS TWICE. The markup below is what a visitor reads; `agoCopySnippet`
-               near the bottom of this file holds the copy the button puts on their clipboard. They
-               must match, and nothing enforces it - so change both, and the check is to strip the
-               spans from this one and compare. -->
-          <div class="code-chip">&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="val">"https://chat-api.reserve-me.ru/widget/widget.js"</span>
-  <span class="attr">data-site</span>=<span class="val">"your-site-id"</span> <span class="attr">async</span>&gt;&lt;/<span class="tag">script</span>&gt;</div>
-          <button class="copy-btn" type="button" onclick="agoCopySnippet(this)" data-i18n="how.step1.copy">Copy snippet</button>
+      <div class="adv">
+        <div class="adv-hi">
+          <span class="mk"><span class="ms">event_available</span></span>
+          <div>
+            <b data-i18n="home.adv.cal.t">Модуль «Календарь» — запись к мастерам</b>
+            <p data-i18n="home.adv.cal.b">Мастера, услуги и расписание настраиваются в том же кабинете. Клиент записывается сам — и в виджете на сайте, и прямо в переписке через боты в мессенджерах, не переходя никуда и не скачивая приложение.</p>
+          </div>
         </div>
 
-        <div class="step-card">
-          <span class="step-num">02</span>
-          <h3 data-i18n="how.step2.title">Visitors start talking</h3>
-          <p data-i18n="how.step2.body">A bubble appears in the corner. Messages arrive in real time — no page reloads, no polling delay.</p>
-        </div>
-
-        <div class="step-card">
-          <span class="step-num">03</span>
-          <h3 data-i18n="how.step3.title">Your team answers</h3>
-          <p data-i18n="how.step3.body">Operators work from one console: conversation history, file exchange, and presence, kept in sync across every open tab.</p>
+        <div class="adv-grid">
+          <div class="adv-item">
+            <span class="mk"><span class="ms">forum</span></span>
+            <div><b data-i18n="home.adv1.t">Семь каналов в одной очереди</b><p data-i18n="home.adv1.b">Сайт, Telegram, WhatsApp, ВКонтакте, Авито, MAX и почта — одно окно оператора вместо семи вкладок.</p></div>
+          </div>
+          <div class="adv-item">
+            <span class="mk"><span class="ms">attach_file</span></span>
+            <div><b data-i18n="home.adv2.t">Файлы, поиск, теги, заметки, передача диалога</b><p data-i18n="home.adv2.b">Всё, что нужно оператору в обычный рабочий день, — без доплат и надстроек.</p></div>
+          </div>
+          <div class="adv-item">
+            <span class="mk"><span class="ms">monitoring</span></span>
+            <div><b data-i18n="home.adv3.t">Отчёты по операторам, каналам, источникам и конверсии</b><p data-i18n="home.adv3.b">Видно, какая реклама приводит разговоры и что с ними происходит дальше.</p></div>
+          </div>
+          <div class="adv-item">
+            <span class="mk"><span class="ms">auto_awesome</span></span>
+            <div><b data-i18n="home.adv4.t">Подсказка ответа и автоответ вне рабочих часов</b><p data-i18n="home.adv4.b">Ночью клиент получает ответ, а утром оператор — готовый черновик.</p></div>
+          </div>
+          <div class="adv-item">
+            <span class="mk"><span class="ms">shield</span></span>
+            <div><b data-i18n="home.adv5.t">Полная изоляция магазинов друг от друга</b><p data-i18n="home.adv5.b">Ваши диалоги и контакты видите только вы и ваши операторы.</p></div>
+          </div>
+          <div class="adv-item">
+            <span class="mk"><span class="ms">sync</span></span>
+            <div><b data-i18n="home.adv6.t">Ничего не теряется при обрыве связи</b><p data-i18n="home.adv6.b">Разговор продолжается с того же места, отправленное сообщение доходит.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LIVE DEMOS -->
-  <section id="demos" class="on-night">
+  <section style="padding-top:12px;">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow" style="color:#8f8ac9" data-i18n="demos.eyebrow">Live demos</span>
-        <h2 data-i18n="demos.title">Don't take our word for it. Open one.</h2>
-        <p class="lede ink-soft" data-i18n="demos.lede">Two live shops, two operator teams, completely isolated from each other — running on the same platform, at the same time. This is the actual product, not a screenshot. On either shop page you can also press “Get your own tenant” and get a private operator account nobody else can see into, for about a day.</p>
-      </div>
-
-      <div class="demo-grid">
-        <div class="demo-card light">
-          <span class="demo-badge" data-i18n="demos.card1.badge">Tenant 01 · Light</span>
-          <h3 data-i18n="demos.card1.title">Demo Shop One</h3>
-          <p data-i18n="demos.card1.body">A bright, minimal storefront with its own widget theme and its own operator login — a separate tenant, start to finish.</p>
-          <div class="demo-swatches">
-            <span class="swatch" style="background:#fdfcfa;border:1px solid #e5e2da;"></span>
-            <span class="swatch" style="background:var(--brand);"></span>
-            <span class="swatch" style="background:#14141f;"></span>
-          </div>
-          <div class="demo-foot">
-            <span class="demo-url">demo-shop1.reserve-me.ru</span>
-            <a class="btn btn-primary btn-sm" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="demos.open">Open shop ↗</a>
-          </div>
+      <div class="cta">
+        <span class="kicker" data-i18n="home.cta.kicker">Живой стенд</span>
+        <h2 data-i18n="home.cta.title">Проверка занимает не больше двух минут</h2>
+        <p class="lede" style="text-align:center;" data-i18n="home.cta.lede">Демо-магазин настоящий: настоящий виджет, настоящий сервер, настоящая консоль. Попробуйте себя и в роли клиента, и в роли оператора одновременно — напишите в чат, а со второй вкладки ответьте себе же.</p>
+        <div class="roles">
+          <span class="role"><span class="ms">person</span><span data-i18n="home.cta.role1">Вы — клиент: пишете из виджета</span></span>
+          <span class="role"><span class="ms">headset_mic</span><span data-i18n="home.cta.role2">Вы — оператор: отвечаете из консоли</span></span>
         </div>
-
-        <div class="demo-card dark">
-          <span class="demo-badge" data-i18n="demos.card2.badge">Tenant 02 · Dark + teal</span>
-          <h3 data-i18n="demos.card2.title">Demo Shop Two</h3>
-          <p data-i18n="demos.card2.body">A dark storefront with a teal accent, deliberately styled to look nothing like Shop One — same platform, fully separate tenant.</p>
-          <div class="demo-swatches">
-            <span class="swatch" style="background:#0c1a19;border:1px solid rgba(94,234,212,0.3);"></span>
-            <span class="swatch" style="background:#2fd3c0;"></span>
-            <span class="swatch" style="background:#eafffb;"></span>
-          </div>
-          <div class="demo-foot">
-            <span class="demo-url" style="color:#7ee9d8;">demo-shop2.reserve-me.ru</span>
-            <a class="btn btn-on-brand btn-sm" style="color:#0c1a19;" href="https://demo-shop2.reserve-me.ru" target="_blank" rel="noopener" data-i18n="demos.open">Open shop ↗</a>
-          </div>
+        <div class="hero-ctas" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.cta.demo">Открыть живое демо ↗</a>
+          <a class="btn btn-ghost" href="#calc" data-i18n="home.cta.calc">Посчитать свой тариф</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- UNDER THE HOOD - one band, not a section.
-       This was an eyebrow, a heading, a lede and a four-card grid, sitting at the same visual weight
-       as everything else on the page and taking a full screen to say four things nobody buys on. The
-       four claims survive word for word in spirit; the furniture around them does not. It stays
-       directly under the demos deliberately: the "isolation is real" line is a claim about the two
-       shops the reader has just been looking at, and it is worth nothing anywhere else on the page.
-       `id="tech"` is kept even though nothing in the nav points at it any more - the anchor is
-       older than this change and costs one word to honour. -->
-  <section id="tech" class="tech-strip-section">
-    <div class="wrap">
-      <div class="tech-strip">
-        <p class="tech-strip-lead" data-i18n-html="tech.lead">Under the hood: <span class="muted">the isolation between those two shops is real, not a demo trick.</span></p>
-        <ul class="tech-strip-chips">
-          <li><span class="mark">⚡</span><span data-i18n="tech.chip1">Real-time delivery</span></li>
-          <li><span class="mark">▦</span><span data-i18n="tech.chip2">Real tenant isolation</span></li>
-          <li><span class="mark">↺</span><span data-i18n="tech.chip3">Reconnects lose nothing</span></li>
-          <li><span class="mark">📎</span><span data-i18n="tech.chip4">Attachments included</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING.
-       Two cards, because there are exactly two states an account can be in, and no invented tier
-       names for either - "free" is the tier string the product itself uses, and the paid one is
-       described by what it costs rather than by a label this page would be the only place to find.
-
-       Every ₽ figure comes out of prices.json at runtime (i18n.js) and nothing here hardcodes one.
-       A key with no published version - `admin-extra` today - renders as a sentence saying exactly
-       that, which is why the fourth bullet below carries no number and is not supposed to.
-
-       No buy button, anywhere, on purpose: the path is register first, choose and pay inside the
-       product. The band at the bottom of this section is where that is said out loud, because a
-       missing button is otherwise read as a missing feature. -->
-  <section id="pricing" class="on-alt">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow" style="color:var(--brand-deep)" data-i18n="pricing.eyebrow">Pricing</span>
-        <h2 data-i18n="pricing.title">Start free. Pay only for what you add.</h2>
-        <p class="lede" data-i18n="pricing.lede">A free account gives you two operator seats and an administrator, at no cost. Everything past that is priced per unit and switched on by you, inside the product.</p>
-      </div>
-
-      <div class="price-grid">
-        <div class="price-card">
-          <span class="price-label" data-i18n="pricing.free.label">Free</span>
-          <div class="price-amount-row">
-            <span class="price-amount" data-i18n="pricing.free.amount">₽0</span>
-            <span class="price-period" data-i18n="pricing.permonth">/mo</span>
-          </div>
-          <p class="price-note" data-i18n="pricing.free.note">No card, no trial clock.</p>
-          <ul class="price-list">
-            <li><span data-i18n-html="pricing.free.f1"><b>2</b> operator seats</span></li>
-            <li><span data-i18n-html="pricing.free.f2"><b>1</b> administrator</span></li>
-            <li><span data-i18n="pricing.free.f3">The widget on your site, real-time delivery and file attachments — the same ones the paid plan runs on.</span></li>
-          </ul>
-        </div>
-
-        <div class="price-card featured">
-          <span class="price-label" data-i18n="pricing.paid.label">Paid</span>
-          <div class="price-amount-row" data-price-row="seat-base">
-            <span class="price-prefix" data-price-only data-i18n="pricing.from">from</span>
-            <span class="price-amount" data-price="seat-base"></span>
-            <span class="price-period" data-price-only data-i18n="pricing.permonth">/mo</span>
-          </div>
-          <p class="price-note" data-i18n="pricing.paid.note">Billed monthly, per account, in roubles.</p>
-          <ul class="price-list">
-            <li><span data-i18n-html="pricing.paid.f1">Up to <b>3</b> operator seats included in the base price</span></li>
-            <!-- One flex child, not two: the list item's own `gap` sits between the bullet and the
-                 text, and letting it fall between the sentence and its price too opened a visible
-                 hole in the middle of the line. -->
-            <li><span><span data-i18n-html="pricing.paid.f2">Each seat beyond that, up to <b>5</b> in total —</span> <span class="price-inline" data-price="seat-extra" data-price-period></span></span></li>
-            <li><span data-i18n-html="pricing.paid.f3"><b>2</b> administrators included</span></li>
-            <!-- Real prices were published for both admin-extra (2026-09-14) and channel-addon
-                 (2026-09-15) - both moved off the "pending" static-text shape onto the identical
-                 two-span live-bound pattern f2 above already uses, rather than staying prose that
-                 could never show a real figure. -->
-            <li><span><span data-i18n-html="pricing.paid.f4">Each Administrator beyond the two included —</span> <span class="price-inline" data-price="admin-extra" data-price-period></span></span></li>
-            <li><span><span data-i18n-html="pricing.paid.f5">Each connected channel beyond the widget — Telegram, MAX, VK, WhatsApp, Avito and email are already live, one flat price for any —</span> <span class="price-inline" data-price="channel-addon" data-price-period></span></span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="price-soon">
-        <span class="soon-label" data-i18n="pricing.soon.label">Not sold yet:</span>
-        <span class="soon-chip" data-i18n="pricing.soon.calendar">AGO Calendar — booking and scheduling</span>
-      </div>
-
-      <div class="price-path">
-        <div>
-          <h3 data-i18n="pricing.path.title">How you actually start</h3>
-          <p data-i18n="pricing.path.body">There is no buy button on this page, deliberately. You register first; then, inside the product, you pick which capabilities to switch on and pay for exactly those, there. Want to look around before any of that? The demo shops hand out a private operator account on the spot — the button below opens one.</p>
-        </div>
-        <div class="ctas">
-          <a class="btn btn-on-brand" href="#demos" data-i18n="pricing.cta.demo">Open a live demo</a>
-          <a class="btn btn-outline-on-brand" href="pricing.html" data-i18n="pricing.cta.full">Full pricing ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a class="brand-mark" href="#top">
-          <span class="glyph">A</span>
-          <span class="word">AGO Chat</span>
-        </a>
-        <p class="footer-tagline" data-i18n="footer.tagline">Embeddable live chat for real conversations — real-time, multi-tenant, self-hosted.</p>
-      </div>
-      <nav class="footer-links">
-        <a href="#how" data-i18n="nav.how">How it works</a>
-        <a href="#demos" data-i18n="nav.demos">Live demos</a>
-        <a href="pricing.html" data-i18n="nav.pricing">Pricing</a>
-        <!-- `adr/0091` step 3: the console moved to the bare product name. `console.` is retired, not
-             merely aliased, so this link had to move with it or become a dead button on the one page
-             a prospective customer reads. -->
-        <a href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Operator login ↗</a>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <span data-i18n="footer.copy">© 2026 AGO Chat</span>
-      <span>office.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru</span>
-      <span class="lang-switch" role="group" aria-label="Language">
-        <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
-        <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
-      </span>
-    </div>
+  <div class="wrap foot-row">
+    <span class="foot-brand">AGO Chat</span>
+    <a href="pricing.html" data-i18n="pricing.cta.full">Все цены ↗</a>
+    <a href="#what" data-i18n="nav.features">Возможности</a>
+    <a href="#adv" data-i18n="nav.advantages">Преимущества</a>
+    <a href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
+    <a href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
+    <span class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
+      <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
+    </span>
+    <span class="foot-hosts">office.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru · <span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
   </div>
 </footer>
 
-
-<!-- The dictionary, the language switch and the price rendering now live in `i18n.js`, shared with
-     `pricing.html` - see that file's own header for why. Loaded here at the end of the body, exactly
-     where the inline version used to sit, so it still runs with the whole document already parsed. -->
+<!-- The dictionary, the language switch and the price lookup, shared with `pricing.html`. -->
 <script src="i18n.js"></script>
-<script>
-  /* Index-only: the one string on this page a visitor can put on their clipboard. Deliberately left
-     here rather than moved into the shared file - `pricing.html` has no snippet to copy, and the
-     comment in the markup above about this string existing twice only makes sense next to it. */
-  function agoCopySnippet(btn){
-    var text = '<script src="https://chat-api.reserve-me.ru/widget/widget.js" data-site="your-site-id" async><' + '/script>';
-    var lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'ru';
-    var dict = AGO_I18N[lang];
-    var done = function(){
-      var original = btn.textContent;
-      btn.textContent = dict['copy.copied'];
-      setTimeout(function(){ btn.textContent = original; }, 1600);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(function(){ btn.textContent = dict['copy.manual']; });
-    } else {
-      btn.textContent = dict['copy.manual'];
-    }
-  }
-</script>
+<!-- Front-page-only behaviour: the calculator and the theme toggle. `agoRenderPrices` calls into
+     this file when it is present, so the calculator re-renders both when prices land and when the
+     language changes, without `i18n.js` having to know what a calculator is beyond its name. -->
+<script src="home.js"></script>
 </body>
 </html>

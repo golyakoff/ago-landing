@@ -46,6 +46,9 @@ COPY index.html /usr/share/nginx/html/index.html
 COPY pricing.html /usr/share/nginx/html/pricing.html
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY i18n.js /usr/share/nginx/html/i18n.js
+# The front page's own script - the price calculator. Only index.html loads it; pricing.html has
+# nothing to calculate, which is why it is a second file rather than more of i18n.js.
+COPY home.js /usr/share/nginx/html/home.js
 # The published-price snapshot - genuinely optional, and the bracket is what makes it so. A `COPY`
 # whose source matches nothing fails the build; a *glob* that matches nothing is skipped, and
 # `prices.jso[n]` is a glob spelling the same filename. Verified by building both ways rather than
