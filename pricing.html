@@ -144,34 +144,36 @@
         </div>
       </div>
 
-      <!-- 3. The same two prices, added up. Not a third source of numbers - the arithmetic is the
-              rule the product itself applies, done in the browser from the two figures above.
-
-              The third column is why this table can exist at all. Without it the first two rows read
-              as a mistake: the base price covers three seats, so "2 seats" and "3 seats" carry the
-              same figure and a reader sees either a typo or a shop charging two people for three.
-              Naming what each row is made of turns the repetition into the explanation. -->
+      <!-- 3. The rule itself, not a table of its outputs. A four-row seat ladder stood here and
+              read as a mistake twice over: the base price covers three seats, so "2" and "3" carried
+              the same figure, and a reader saw either a typo or a shop charging two people for three.
+              Adding a "what it is made of" column fixed the misreading and left four rows restating
+              two numbers. This states the rule and shows one worked sum instead - same two published
+              prices, still read at runtime, nothing stored. The per-combination question the table
+              was really for belongs to the front page's calculator. -->
       <div class="price-table-wrap">
         <div class="price-table-head">
-          <h3 data-i18n="pricingpage.ladder.title">Сколько стоит месяц при разном числе мест</h3>
-          <p data-i18n="pricingpage.ladder.body">Это не второй прайс-лист — это те же две цены выше, сложенные. Базовая цена покрывает три места, поэтому до трёх операторов сумма не меняется.</p>
+          <h3 data-i18n="pricingpage.rule.title">Как считается цена за операторов</h3>
+          <p data-i18n="pricingpage.rule.body">Здесь нет второго прайс-листа: обе цифры — те же две цены, что в таблице выше.</p>
         </div>
-        <div class="price-table-scroll">
-          <table class="price-table">
-            <thead>
-              <tr>
-                <th data-i18n="pricingpage.ladder.col1">Операторских мест</th>
-                <th data-i18n="pricingpage.ladder.col2">В месяц</th>
-                <th data-i18n="pricingpage.ladder.col3">Из чего складывается</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th>2</th><td class="amount" data-price-seats="2"></td><td data-i18n="pricingpage.ladder.of2">Базовая цена</td></tr>
-              <tr><th>3</th><td class="amount" data-price-seats="3"></td><td data-i18n="pricingpage.ladder.of3">Базовая цена</td></tr>
-              <tr><th>4</th><td class="amount" data-price-seats="4"></td><td data-i18n="pricingpage.ladder.of4">База + 1 место</td></tr>
-              <tr><th>5</th><td class="amount" data-price-seats="5"></td><td data-i18n="pricingpage.ladder.of5">База + 2 места</td></tr>
-            </tbody>
-          </table>
+        <div class="price-rule">
+          <div class="rule-line">
+            <span class="rule-n">1–3</span>
+            <span class="rule-what" data-i18n="pricingpage.rule.first">оператора — базовая цена аккаунта</span>
+            <span class="amount" data-price="seat-base" data-price-period></span>
+          </div>
+          <div class="rule-line">
+            <span class="rule-n">4–5</span>
+            <span class="rule-what" data-i18n="pricingpage.rule.next">каждый следующий оператор добавляет</span>
+            <span class="amount"><span class="rule-plus">+</span><span data-price="seat-extra" data-price-period></span></span>
+          </div>
+          <p class="rule-example">
+            <span data-i18n="pricingpage.rule.example">Пять операторов, например:</span>
+            <span class="amount" data-price="seat-base"></span> +
+            <span class="amount" data-price="seat-extra"></span> +
+            <span class="amount" data-price="seat-extra"></span> =
+            <span class="amount" data-price-seats="5"></span>
+          </p>
         </div>
       </div>
 
