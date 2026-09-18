@@ -144,6 +144,37 @@
         </div>
       </div>
 
+      <!-- 3. The same two prices, added up. Not a third source of numbers - the arithmetic is the
+              rule the product itself applies, done in the browser from the two figures above.
+
+              The third column is why this table can exist at all. Without it the first two rows read
+              as a mistake: the base price covers three seats, so "2 seats" and "3 seats" carry the
+              same figure and a reader sees either a typo or a shop charging two people for three.
+              Naming what each row is made of turns the repetition into the explanation. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head">
+          <h3 data-i18n="pricingpage.ladder.title">Сколько стоит месяц при разном числе мест</h3>
+          <p data-i18n="pricingpage.ladder.body">Это не второй прайс-лист — это те же две цены выше, сложенные. Базовая цена покрывает три места, поэтому до трёх операторов сумма не меняется.</p>
+        </div>
+        <div class="price-table-scroll">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th data-i18n="pricingpage.ladder.col1">Операторских мест</th>
+                <th data-i18n="pricingpage.ladder.col2">В месяц</th>
+                <th data-i18n="pricingpage.ladder.col3">Из чего складывается</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th>2</th><td class="amount" data-price-seats="2"></td><td data-i18n="pricingpage.ladder.of2">Базовая цена</td></tr>
+              <tr><th>3</th><td class="amount" data-price-seats="3"></td><td data-i18n="pricingpage.ladder.of3">Базовая цена</td></tr>
+              <tr><th>4</th><td class="amount" data-price-seats="4"></td><td data-i18n="pricingpage.ladder.of4">База + 1 место</td></tr>
+              <tr><th>5</th><td class="amount" data-price-seats="5"></td><td data-i18n="pricingpage.ladder.of5">База + 2 места</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <p class="fineprint" data-i18n="pricingpage.fineprint">Все суммы — в рублях, за месяц, за аккаунт. Страница показывает цены, которые опубликовал сам продукт; если суммы здесь нет, значит по этой позиции ничего не опубликовано, — а не значит, что она бесплатна.</p>
       <!-- Hidden by `agoRenderPrices` when there is no snapshot to date. -->
       <p class="fineprint" style="margin-top:8px;" data-price-updated hidden></p>
