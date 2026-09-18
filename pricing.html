@@ -144,39 +144,6 @@
         </div>
       </div>
 
-      <!-- 3. The rule itself, not a table of its outputs. A seat ladder used to sit here, and it
-              read as a mistake: the base price covers three seats, so the "2 seats" and "3 seats"
-              rows carried the same figure and a reader saw either a typo or a shop charging two
-              people for three. The arithmetic is unchanged - it is still the two published prices
-              above and nothing else - but stated as the rule plus one worked example, which is what
-              the table was failing to convey. The front page's calculator does the per-combination
-              case properly. -->
-      <div class="price-table-wrap">
-        <div class="price-table-head">
-          <h3 data-i18n="pricingpage.rule.title">Как считается цена за операторов</h3>
-          <p data-i18n="pricingpage.rule.body">Здесь нет второго прайс-листа: обе цифры — те же две цены, что в таблице выше.</p>
-        </div>
-        <div class="price-rule">
-          <div class="rule-line">
-            <span class="rule-n">1–3</span>
-            <span class="rule-what" data-i18n="pricingpage.rule.first">оператора — базовая цена аккаунта</span>
-            <span class="amount" data-price="seat-base" data-price-period></span>
-          </div>
-          <div class="rule-line">
-            <span class="rule-n">4–5</span>
-            <span class="rule-what" data-i18n="pricingpage.rule.next">каждый следующий оператор добавляет</span>
-            <span class="amount"><span class="rule-plus">+</span><span data-price="seat-extra" data-price-period></span></span>
-          </div>
-          <p class="rule-example">
-            <span data-i18n="pricingpage.rule.example">Пять операторов, например:</span>
-            <span class="amount" data-price="seat-base"></span> +
-            <span class="amount" data-price="seat-extra"></span> +
-            <span class="amount" data-price="seat-extra"></span> =
-            <span class="amount" data-price-seats="5"></span>
-          </p>
-        </div>
-      </div>
-
       <p class="fineprint" data-i18n="pricingpage.fineprint">Все суммы — в рублях, за месяц, за аккаунт. Страница показывает цены, которые опубликовал сам продукт; если суммы здесь нет, значит по этой позиции ничего не опубликовано, — а не значит, что она бесплатна.</p>
       <!-- Hidden by `agoRenderPrices` when there is no snapshot to date. -->
       <p class="fineprint" style="margin-top:8px;" data-price-updated hidden></p>
