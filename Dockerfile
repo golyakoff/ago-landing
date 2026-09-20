@@ -46,6 +46,10 @@ COPY index.html /usr/share/nginx/html/index.html
 COPY pricing.html /usr/share/nginx/html/pricing.html
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY i18n.js /usr/share/nginx/html/i18n.js
+# `25-171`: the pricing calculator's real channel-icon files (byte-identical to ago-widget's own
+# `25-172` assets) - without this line the image builds successfully and 404s on every icon at
+# runtime, since the calculator references them as plain relative `icons/*.svg` paths.
+COPY icons/ /usr/share/nginx/html/icons/
 # The front page's own script - the price calculator. Only index.html loads it; pricing.html has
 # nothing to calculate, which is why it is a second file rather than more of i18n.js.
 COPY home.js /usr/share/nginx/html/home.js
