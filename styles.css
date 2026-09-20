@@ -156,14 +156,23 @@ input[type=range]{width:100%;accent-color:var(--blue);height:22px;}
 @media(max-width:420px){.chgrid{grid-template-columns:repeat(2,1fr);}}
 .chbtn{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:transparent;color:var(--ink-soft);
   border-radius:9px;padding:9px 10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;text-align:left;transition:.15s;}
-/* Brand marks, not logos: drawn here rather than loaded, and deliberately generic enough not to
-   pass as an official asset. Replacing them with each brand's own SVG is a licensing question as
-   much as a design one. */
+/* `25-171`: the five channels' real brand icon files, byte-identical to the ones `25-172` shipped
+   into ago-widget's own channel switcher - copied in under `icons/`, never redrawn or recolored here.
+   A channel not yet toggled on stays desaturated via `filter:grayscale`, the same dim/highlight the
+   old hand-drawn placeholders used, so an unselected real logo doesn't read as more "official" than a
+   selected one. */
 .chbtn .mk{flex:0 0 auto;width:18px;height:18px;border-radius:5px;display:grid;place-items:center;
-  color:#fff;font-size:9px;font-weight:800;line-height:1;letter-spacing:-.02em;
   filter:grayscale(1);opacity:.55;transition:filter .15s,opacity .15s;}
 .chbtn .mk.round{border-radius:50%;}
-.chbtn .mk svg{width:12px;height:12px;}
+.chbtn .mk img{width:100%;height:100%;display:block;}
+/* MAX's native art is a rounded square (`rect ry="249.681"` on a 1000x1000 viewBox) - the other four
+   already render as full circles from their own path data, so MAX alone needs this crop (identical
+   technique to ago-widget's `25-172`). */
+.chbtn .mk img.mk-crop{clip-path:circle(50% at 50% 50%);}
+/* Avito's four colored circles don't fill a circular bounding box the way the other marks do - sized
+   down within the existing badge rather than stretched edge-to-edge, so it doesn't read as oversized
+   next to its neighbors. */
+.chbtn .mk img.mk-compact{width:76%;height:76%;}
 .chbtn[aria-pressed="true"]{border-color:var(--blue);color:var(--ink);background:color-mix(in srgb,var(--blue) 12%,transparent);}
 .chbtn[aria-pressed="true"] .mk{filter:none;opacity:1;}
 .calc-note{margin-top:10px;font-size:12.5px;color:var(--ink-faint);}
