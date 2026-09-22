@@ -40,6 +40,13 @@ LABEL org.opencontainers.image.source="https://github.com/golyakoff/ago-landing"
 # own header comment for the incident that found it.
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html /usr/share/nginx/html/index.html
+# `25-168`: the gradient "A" mark index.html's own <link rel="icon"> now points at - named
+# individually for the same reason as everything else in this list (see the `COPY . ` comment
+# below): without these two lines the image would build successfully and 404 on the favicon at
+# runtime, exactly the failure mode `25-171`'s icons/ comment already found once for a different
+# asset.
+COPY favicon.svg /usr/share/nginx/html/favicon.svg
+COPY favicon.ico /usr/share/nginx/html/favicon.ico
 # The pricing page, and the stylesheet and dictionary both pages share. Named one by one rather than
 # `COPY . `: this image should ship the site and nothing else, and an explicit list is the only
 # version of that which stays true when somebody drops a scratch file in the repository root.
