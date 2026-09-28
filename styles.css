@@ -123,8 +123,8 @@ section[id],#calc,#top{scroll-margin-top:84px;}
 /* nav */
 .nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);}
 .nav-row{display:flex;align-items:center;gap:24px;height:64px;}
-.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:'Onest',sans-serif;font-weight:800;font-size:17px;}
-.brand .g{width:28px;height:28px;border-radius:8px;background:linear-gradient(140deg,var(--blue),var(--violet));display:grid;place-items:center;color:#fff;font-size:14px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Unbounded','Onest',sans-serif;font-weight:700;font-size:26px;}
+.brand .g{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--blue),var(--violet));display:grid;place-items:center;color:#fff;font-size:17px;}
 /* `nav-links` carries the group's own right-push: everything from here on (the CTA, then the theme
    toggle last) rides its `margin-left:auto` to the far edge, while `.brand` stays pinned left - so the
    theme toggle ends up right-most simply by being the last item in source order, no rule of its own. */
