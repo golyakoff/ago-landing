@@ -25,6 +25,10 @@
      it. Both read the same snapshot through the same helper, so the two can never disagree. -->
 <header class="nav">
   <div class="wrap nav-row">
+    <!-- Mobile-only trigger for the drawer below; hidden on desktop (styles.css). -->
+    <button class="hamburger" type="button" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileDrawer">
+      <span class="ms" aria-hidden="true">menu</span>
+    </button>
     <a class="brand" href="index.html"><span class="g">A</span>AGO Chat</a>
     <nav class="nav-links">
       <a href="index.html#calc" data-i18n="nav.pricing">Сколько стоит</a>
@@ -32,12 +36,31 @@
       <a href="index.html#widget" data-i18n="nav.widget">Виджет</a>
       <a href="index.html#adv" data-i18n="nav.advantages">Преимущества</a>
     </nav>
+    <!-- Theme toggle now last in source order (nav-links' own `margin-left:auto` carries the whole
+         group - CTA then toggle - to the right edge), so it lands right-most on desktop. -->
+    <a class="btn btn-primary btn-sm nav-cta" href="index.html#calc" data-i18n="nav.cta">Начать бесплатно</a>
     <button class="theme-toggle" type="button" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
       <span class="ms" id="themeIcon" aria-hidden="true">dark_mode</span>
     </button>
-    <a class="btn btn-primary btn-sm" href="index.html#calc" data-i18n="nav.cta">Начать бесплатно</a>
   </div>
 </header>
+
+<!-- Mobile drawer - see index.html's own copy for the full reasoning; targets here match this
+     page's own header nav (index.html#... - this page is not the anchors' own document). -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<nav class="drawer" id="mobileDrawer" aria-label="Мобильное меню" aria-hidden="true">
+  <a class="drawer-link" href="index.html#calc" data-i18n="nav.pricing">Сколько стоит</a>
+  <a class="drawer-link" href="index.html#what" data-i18n="nav.features">Возможности</a>
+  <a class="drawer-link" href="index.html#widget" data-i18n="nav.widget">Виджет</a>
+  <a class="drawer-link" href="index.html#adv" data-i18n="nav.advantages">Преимущества</a>
+  <div class="drawer-divider"></div>
+  <a class="btn btn-primary drawer-cta" href="index.html#calc" data-i18n="nav.cta">Начать бесплатно</a>
+  <div class="drawer-divider"></div>
+  <button class="drawer-theme-row" type="button" id="drawerThemeToggle">
+    <span class="ms" id="drawerThemeIcon" aria-hidden="true">dark_mode</span>
+    <span id="drawerThemeLabel">Тёмная тема</span>
+  </button>
+</nav>
 
 <main id="top">
 
@@ -46,7 +69,7 @@
       <div class="head" style="max-width:72ch;">
         <a class="back-link" href="index.html" data-i18n="pricingpage.back">← На главную</a>
         <h2 data-i18n="pricingpage.title">Что бесплатно, что платно и сколько стоит каждая позиция.</h2>
-        <p class="lede page-lede" data-i18n="pricingpage.lede">Каждая сумма на этой странице — цена, которую продукт действительно опубликовал: не округлённый пример и не план когда-нибудь столько брать. Там, где опубликованной цены нет, страница так и пишет, а не придумывает.</p>
+        <p class="lede page-lede" data-i18n="pricingpage.lede">Цены и условия, которые сейчас действуют для каждого тарифа.</p>
       </div>
 
       <!-- 1. The only difference that actually decides anything: how many people can work in it. -->
@@ -102,7 +125,7 @@
       <div class="price-table-wrap">
         <div class="price-table-head">
           <h3 data-i18n="pricingpage.units.title">Что стоит денег, по единицам</h3>
-          <p data-i18n="pricingpage.units.body">Четыре позиции, и каждая цена ниже — та, которую опубликовал сам продукт.</p>
+          <p data-i18n="pricingpage.units.body">Четыре позиции и их цены:</p>
         </div>
         <div class="price-table-scroll">
           <table class="price-table">
@@ -137,14 +160,24 @@
               <tr>
                 <th data-i18n="pricingpage.units.channel">Каждый подключённый канал сверх сайта</th>
                 <td class="amount" data-price="channel-addon" data-price-period></td>
-                <td data-i18n="pricingpage.units.channel.note">Одна цена на любой канал — Telegram, MAX, ВКонтакте, WhatsApp, Авито. Чат на сайте и почта включены в любой аккаунт и не считаются.</td>
+                <td data-i18n="pricingpage.units.channel.note">Одна цена на любой канал — Telegram, MAX. Чат на сайте и почта включены в любой аккаунт и не считаются.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <p class="fineprint" data-i18n="pricingpage.fineprint">Все суммы — в рублях, за месяц, за аккаунт. Страница показывает цены, которые опубликовал сам продукт; если суммы здесь нет, значит по этой позиции ничего не опубликовано, — а не значит, что она бесплатна.</p>
+      <!-- `13-09`: the "how do I actually get access" block a YooKassa self-payment review checks
+           for - the digital-delivery equivalent of a shipping-methods section, since there is no
+           physical delivery to describe. -->
+      <div class="price-table-wrap">
+        <div class="price-table-head" style="border-bottom:none;">
+          <h3 data-i18n="pricingpage.access.title">Как открывается доступ после оплаты</h3>
+          <p data-i18n-html="pricingpage.access.body">Это SaaS-сервис: регистрация → выбор возможностей внутри продукта → оплата там же → доступ активируется автоматически, без ожидания и без ручных действий с нашей стороны. Вход в консоль оператора — <code>office.agochat.ru</code>. Доставка цифровая: физического товара и почтовой отправки нет.</p>
+        </div>
+      </div>
+
+      <p class="fineprint" data-i18n="pricingpage.fineprint">Все суммы — в рублях, за месяц, за аккаунт. Если цены на позицию здесь нет — значит, она пока не опубликована, а не бесплатна.</p>
       <!-- Hidden by `agoRenderPrices` when there is no snapshot to date. -->
       <p class="fineprint" style="margin-top:8px;" data-price-updated hidden></p>
 
@@ -154,11 +187,11 @@
       <div class="price-path">
         <div>
           <h3 data-i18n="pricing.path.title">Как это начинается на самом деле</h3>
-          <p data-i18n="pricing.path.body">Кнопки «купить» на этой странице нет — намеренно. Сначала регистрация, а дальше уже внутри продукта вы выбираете, какие возможности подключить, и оплачиваете именно их — там же. Хотите сперва посмотреть? Демо-магазин выдаёт приватный аккаунт оператора сразу — кнопка ниже как раз туда.</p>
+          <p data-i18n="pricing.path.body">Сначала регистрация, а дальше уже внутри продукта вы выбираете, какие возможности подключить, и оплачиваете именно их — там же. Хотите сперва посмотреть? Демо-магазин выдаёт приватный аккаунт оператора сразу — кнопка ниже как раз туда.</p>
         </div>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="pricing.cta.demo">Открыть живое демо ↗</a>
-          <a class="btn btn-ghost" href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
+          <a class="btn btn-primary" href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="pricing.cta.demo">Открыть живое демо ↗</a>
+          <a class="btn btn-ghost" href="https://office.agochat.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
         </div>
       </div>
     </div>
@@ -172,13 +205,15 @@
     <a href="index.html" data-i18n="pricingpage.back">← На главную</a>
     <a href="index.html#what" data-i18n="nav.features">Возможности</a>
     <a href="index.html#adv" data-i18n="nav.advantages">Преимущества</a>
-    <a href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
-    <a href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
+    <a href="legal/offer.html">Оферта</a>
+    <a href="legal/requisites.html">Реквизиты</a>
+    <a href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
+    <a href="https://office.agochat.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
     <span class="lang-switch" role="group" aria-label="Language">
       <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
       <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
     </span>
-    <span class="foot-hosts">office.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru · <span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
+    <span class="foot-hosts"><span>agochat.ru · office.agochat.ru</span><span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
   </div>
 </footer>
 

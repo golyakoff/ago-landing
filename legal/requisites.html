@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Реквизиты и контакты AGO Chat — ФИО, ИНН, налоговый статус и способ связи с исполнителем.">
+<title>Реквизиты и контакты — AGO Chat</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<!-- `13-11`: the requisites page a YooKassa self-payment review checks for - the "link to a page with
+     requisites" field the onboarding checklist otherwise leaves red. Publishes exactly the personal
+     data the provider requires and nothing past it: ФИО, ИНН and НПД status are intentionally public
+     (the offer at /legal/offer carries the same three facts); date and place of birth are KYC-only
+     and never appear here (ago-business/docs/commerce/yookassa-onboarding.md). Root-relative asset
+     and nav paths, same reason as legal/offer.html: this page is served at /legal/requisites, one
+     level below the site root. -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <!-- Mobile-only trigger for the drawer below; hidden on desktop (styles.css). -->
+    <button class="hamburger" type="button" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileDrawer">
+      <span class="ms" aria-hidden="true">menu</span>
+    </button>
+    <a class="brand" href="/index.html"><span class="g">A</span>AGO Chat</a>
+    <nav class="nav-links">
+      <a href="/index.html#calc" data-i18n="nav.pricing">Сколько стоит</a>
+      <a href="/index.html#what" data-i18n="nav.features">Возможности</a>
+      <a href="/index.html#widget" data-i18n="nav.widget">Виджет</a>
+      <a href="/index.html#adv" data-i18n="nav.advantages">Преимущества</a>
+    </nav>
+    <!-- Theme toggle now last in source order (nav-links' own `margin-left:auto` carries the whole
+         group - CTA then toggle - to the right edge), so it lands right-most on desktop. -->
+    <a class="btn btn-primary btn-sm nav-cta" href="/index.html#calc" data-i18n="nav.cta">Начать бесплатно</a>
+    <button class="theme-toggle" type="button" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+      <span class="ms" id="themeIcon" aria-hidden="true">dark_mode</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer - see index.html's own copy for the full reasoning; root-relative targets, same
+     reason every other link on this nested page is root-relative (served at /legal/requisites). -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<nav class="drawer" id="mobileDrawer" aria-label="Мобильное меню" aria-hidden="true">
+  <a class="drawer-link" href="/index.html#calc" data-i18n="nav.pricing">Сколько стоит</a>
+  <a class="drawer-link" href="/index.html#what" data-i18n="nav.features">Возможности</a>
+  <a class="drawer-link" href="/index.html#widget" data-i18n="nav.widget">Виджет</a>
+  <a class="drawer-link" href="/index.html#adv" data-i18n="nav.advantages">Преимущества</a>
+  <div class="drawer-divider"></div>
+  <a class="btn btn-primary drawer-cta" href="/index.html#calc" data-i18n="nav.cta">Начать бесплатно</a>
+  <div class="drawer-divider"></div>
+  <button class="drawer-theme-row" type="button" id="drawerThemeToggle">
+    <span class="ms" id="drawerThemeIcon" aria-hidden="true">dark_mode</span>
+    <span id="drawerThemeLabel">Тёмная тема</span>
+  </button>
+</nav>
+
+<main id="top">
+  <section style="padding-bottom:40px;">
+    <div class="wrap">
+      <div class="head" style="max-width:72ch;">
+        <a class="back-link" href="/index.html" data-i18n="pricingpage.back">← На главную</a>
+        <h2>Реквизиты и контакты</h2>
+        <p class="lede page-lede">Кто оказывает услуги AGO Chat и как с ним связаться. Полные условия — в <a href="/legal/offer.html">публичной оферте</a>.</p>
+      </div>
+
+      <div class="legal-card">
+        <dl>
+          <dt>ФИО</dt>
+          <dd>Голяков Андрей Александрович</dd>
+
+          <dt>ИНН</dt>
+          <dd>781410194055</dd>
+
+          <dt>Статус</dt>
+          <dd>Самозанятый (налог на профессиональный доход, НПД)</dd>
+
+          <dt>Сайт</dt>
+          <dd><code>https://agochat.ru</code></dd>
+
+          <dt>Контактный e-mail</dt>
+          <dd><a href="mailto:hello@agochat.ru">hello@agochat.ru</a></dd>
+
+          <dt>Оферта</dt>
+          <dd><a href="/legal/offer.html">https://agochat.ru/legal/offer ↗</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="foot-brand">AGO Chat</span>
+    <a href="/index.html" data-i18n="pricingpage.back">← На главную</a>
+    <a href="/pricing.html" data-i18n="pricing.cta.full">Все цены ↗</a>
+    <a href="/legal/offer.html">Оферта</a>
+    <a href="/legal/requisites.html">Реквизиты</a>
+    <a href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
+    <a href="https://office.agochat.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
+    <span class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
+      <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
+    </span>
+    <span class="foot-hosts"><span>agochat.ru · office.agochat.ru</span><span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
+  </div>
+</footer>
+
+<script src="/i18n.js"></script>
+</body>
+</html>

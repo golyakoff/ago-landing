@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AGO Chat — чат для сайта и мессенджеров. Семь каналов в одном окне, запись к мастерам, отчёты. От 490 ₽ в месяц, два оператора бесплатно.">
+<meta name="description" content="AGO Chat — чат для сайта и мессенджеров. Четыре канала в одном окне, запись к мастерам, отчёты. От 490 ₽ в месяц, два оператора бесплатно.">
 <title>AGO Chat</title>
 <!-- 25-168: gradient "A" mark, same treatment as the header's own `.brand .g` (`linear-gradient(140deg,var(--blue),var(--violet))`) -
      the SVG carries the gradient for browsers that support it, the ICO is the flat-rendered fallback for the rest. -->
@@ -23,6 +23,10 @@
      quietly leaving it out of the sum. -->
 <header class="nav">
   <div class="wrap nav-row">
+    <!-- Mobile-only trigger for the drawer below; hidden on desktop (styles.css). -->
+    <button class="hamburger" type="button" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileDrawer">
+      <span class="ms" aria-hidden="true">menu</span>
+    </button>
     <a class="brand" href="#top"><span class="g">A</span>AGO Chat</a>
     <nav class="nav-links">
       <a href="#calc" data-i18n="nav.pricing">Сколько стоит</a>
@@ -30,12 +34,33 @@
       <a href="#widget" data-i18n="nav.widget">Виджет</a>
       <a href="#adv" data-i18n="nav.advantages">Преимущества</a>
     </nav>
+    <!-- Theme toggle now last in source order (nav-links' own `margin-left:auto` carries the whole
+         group - CTA then toggle - to the right edge), so it lands right-most on desktop. -->
+    <a class="btn btn-primary btn-sm nav-cta" href="#calc" data-i18n="nav.cta">Начать бесплатно</a>
     <button class="theme-toggle" type="button" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
       <span class="ms" id="themeIcon" aria-hidden="true">dark_mode</span>
     </button>
-    <a class="btn btn-primary btn-sm" href="#calc" data-i18n="nav.cta">Начать бесплатно</a>
   </div>
 </header>
+
+<!-- Mobile drawer: nav links, then the CTA (primary button treatment, not a plain link), then the
+     theme toggle as a labelled row - the same three groups the desktop header carries, collapsed for
+     a narrow viewport. Hidden entirely on desktop (styles.css); `id="mobileDrawer"` is what the
+     hamburger's `aria-controls` above points at. -->
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<nav class="drawer" id="mobileDrawer" aria-label="Мобильное меню" aria-hidden="true">
+  <a class="drawer-link" href="#calc" data-i18n="nav.pricing">Сколько стоит</a>
+  <a class="drawer-link" href="#what" data-i18n="nav.features">Возможности</a>
+  <a class="drawer-link" href="#widget" data-i18n="nav.widget">Виджет</a>
+  <a class="drawer-link" href="#adv" data-i18n="nav.advantages">Преимущества</a>
+  <div class="drawer-divider"></div>
+  <a class="btn btn-primary drawer-cta" href="#calc" data-i18n="nav.cta">Начать бесплатно</a>
+  <div class="drawer-divider"></div>
+  <button class="drawer-theme-row" type="button" id="drawerThemeToggle">
+    <span class="ms" id="drawerThemeIcon" aria-hidden="true">dark_mode</span>
+    <span id="drawerThemeLabel">Тёмная тема</span>
+  </button>
+</nav>
 
 <main id="top">
 
@@ -44,14 +69,14 @@
       <div>
         <span class="kicker" data-i18n="home.kicker">Чат для сайта и мессенджеров</span>
         <h1 data-i18n-html="home.title">Вся переписка с клиентами <em>от 490 ₽ в месяц</em></h1>
-        <p class="lede" data-i18n="home.lede">Семь каналов, запись к мастерам, отчёты и подсказки — в одном окне и в одном счёте. Никаких «свяжитесь с отделом продаж»: цена посчитана справа, всё включается в кабинете за минуту.</p>
+        <p class="lede" data-i18n="home.lede">Четыре канала, запись к мастерам, отчёты и подсказки — в одном окне и в одном счёте. Никаких «свяжитесь с отделом продаж»: цена посчитана справа, всё включается в кабинете за минуту.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#calc" data-i18n="home.cta1">Посчитать свой тариф</a>
-          <a class="btn btn-ghost" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.cta2">Открыть живое демо ↗</a>
+          <a class="btn btn-ghost" href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.cta2">Открыть живое демо ↗</a>
         </div>
         <div class="hero-facts">
           <div class="fact"><div class="v num" data-i18n="home.fact1.v">0 ₽</div><div class="k" data-i18n="home.fact1.k">двое операторов навсегда</div></div>
-          <div class="fact"><div class="v num">7</div><div class="k" data-i18n="home.fact2.k">каналов в одном окне</div></div>
+          <div class="fact"><div class="v num">4</div><div class="k" data-i18n="home.fact2.k">каналов в одном окне</div></div>
           <div class="fact"><div class="v num">1</div><div class="k" data-i18n="home.fact3.k">строка кода на сайт</div></div>
         </div>
       </div>
@@ -78,12 +103,13 @@
             <div class="ctl-label"><span data-i18n="home.calc.channels">Дополнительные каналы общения</span><span class="val" id="chVal">2</span></div>
             <div class="chgrid" id="chgrid">
               <button class="chbtn" type="button" data-ch="MAX" aria-pressed="true"><span class="mk" aria-hidden="true"><img src="icons/max.svg" alt="" class="mk-crop"></span>MAX</button>
-              <button class="chbtn" type="button" data-ch="ВКонтакте" aria-pressed="false"><span class="mk round" aria-hidden="true"><img src="icons/vk.svg" alt=""></span>ВКонтакте</button>
-              <button class="chbtn" type="button" data-ch="Авито" aria-pressed="false"><span class="mk" aria-hidden="true"><img src="icons/avito.svg" alt="" class="mk-compact"></span>Авито</button>
               <button class="chbtn" type="button" data-ch="Telegram" aria-pressed="true"><span class="mk round" aria-hidden="true"><img src="icons/telegram.svg" alt=""></span>Telegram</button>
-              <button class="chbtn" type="button" data-ch="WhatsApp" aria-pressed="false"><span class="mk round" aria-hidden="true"><img src="icons/whatsapp.svg" alt=""></span>WhatsApp</button>
             </div>
             <p class="calc-note" data-i18n="home.calc.included">Чат на сайте и почта включены в любой аккаунт, в том числе бесплатный.</p>
+            <!-- The one deliberate exception to batch 2 removing every other channel-name mention on
+                 the site: a bare "coming soon" note, not a toggle - those three channels were removed
+                 from the calculator's own set entirely, not merely hidden from it. -->
+            <p class="calc-note" data-i18n="home.calc.soon">Скоро: WhatsApp, ВКонтакте, Авито</p>
           </div>
         </div>
         <div class="calc-out">
@@ -93,7 +119,7 @@
               <div class="lbl" data-i18n="home.calc.total">Итого в месяц</div>
               <div class="amt num" id="total">—</div>
             </div>
-            <a class="btn btn-primary btn-sm" href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.calc.cta">Завести аккаунт</a>
+            <a class="btn btn-primary btn-sm" href="https://office.agochat.ru" target="_blank" rel="noopener" data-i18n="home.calc.cta">Завести аккаунт</a>
           </div>
           <p class="free-note" id="freeNote" hidden data-i18n="home.calc.freenote">Такой набор помещается в бесплатный аккаунт — платить не за что.</p>
           <!-- The reader has a figure; the next honest question is what it is made of. The
@@ -186,7 +212,7 @@
           <li><span class="mk"><span class="ms">check</span></span><span data-i18n="home.widget.t3">Прост в первичной настройке и интеграции</span></li>
         </ul>
         <div class="hero-ctas">
-          <a class="btn btn-ghost" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.widget.cta">Написать в живое демо ↗</a>
+          <a class="btn btn-ghost" href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.widget.cta">Написать в живое демо ↗</a>
         </div>
       </div>
       <div class="screen">
@@ -234,6 +260,21 @@
     </div>
   </section>
 
+  <!-- MOBILE APPS -->
+  <section id="apps" style="padding-top:20px;">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker" data-i18n="home.apps.kicker">Мобильное приложение</span>
+        <h2 data-i18n="home.apps.title">AGO Chat в кармане</h2>
+        <p class="lede" data-i18n="home.apps.body">Консоль оператора — в виде отдельного приложения: отвечайте на чаты и управляйте записями прямо с телефона.</p>
+      </div>
+      <div class="apps-row">
+        <a class="btn btn-primary" href="https://github.com/golyakoff/ago-android/releases" target="_blank" rel="noopener" data-i18n="home.apps.android">Скачать для Android</a>
+        <span class="apps-soon muted" data-i18n="home.apps.ios">iOS — скоро</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ADVANTAGES -->
   <section id="adv" style="padding-top:20px;">
     <div class="wrap">
@@ -255,7 +296,7 @@
         <div class="adv-grid">
           <div class="adv-item">
             <span class="mk"><span class="ms">forum</span></span>
-            <div><b data-i18n="home.adv1.t">Семь каналов в одной очереди</b><p data-i18n="home.adv1.b">Сайт, Telegram, WhatsApp, ВКонтакте, Авито, MAX и почта — одно окно оператора вместо семи вкладок.</p></div>
+            <div><b data-i18n="home.adv1.t">Четыре канала в одной очереди</b><p data-i18n="home.adv1.b">Сайт, Telegram, MAX и почта — одно окно оператора вместо четырёх вкладок.</p></div>
           </div>
           <div class="adv-item">
             <span class="mk"><span class="ms">attach_file</span></span>
@@ -293,7 +334,7 @@
           <span class="role"><span class="ms">headset_mic</span><span data-i18n="home.cta.role2">Вы — оператор: отвечаете из консоли</span></span>
         </div>
         <div class="hero-ctas" style="justify-content:center;">
-          <a class="btn btn-primary" href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.cta.demo">Открыть живое демо ↗</a>
+          <a class="btn btn-primary" href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.cta.demo">Открыть живое демо ↗</a>
           <a class="btn btn-ghost" href="#calc" data-i18n="home.cta.calc">Посчитать свой тариф</a>
         </div>
       </div>
@@ -307,13 +348,15 @@
     <a href="pricing.html" data-i18n="pricing.cta.full">Все цены ↗</a>
     <a href="#what" data-i18n="nav.features">Возможности</a>
     <a href="#adv" data-i18n="nav.advantages">Преимущества</a>
-    <a href="https://demo-shop1.reserve-me.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
-    <a href="https://office.reserve-me.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
+    <a href="legal/offer.html">Оферта</a>
+    <a href="legal/requisites.html">Реквизиты</a>
+    <a href="https://demo-shop1.agochat.ru" target="_blank" rel="noopener" data-i18n="home.foot.demo">Демо</a>
+    <a href="https://office.agochat.ru" target="_blank" rel="noopener" data-i18n="footer.login">Вход для оператора ↗</a>
     <span class="lang-switch" role="group" aria-label="Language">
       <button type="button" id="lang-ru" onclick="agoSetLang('ru')">RU</button>
       <button type="button" id="lang-en" onclick="agoSetLang('en')">EN</button>
     </span>
-    <span class="foot-hosts">office.reserve-me.ru · chat-api.reserve-me.ru · auth.reserve-me.ru · <span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
+    <span class="foot-hosts"><span>agochat.ru · office.agochat.ru</span><span data-i18n="footer.copy">© 2026 AGO Chat</span></span>
   </div>
 </footer>
 

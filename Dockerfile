@@ -1,4 +1,4 @@
-# The public landing page at reserve-me.ru's own apex - a single, self-contained static HTML file
+# The public landing page at agochat.ru's own apex - a single, self-contained static HTML file
 # (no build step: no bundler, no framework, everything inline).
 #
 # `15-07`/`adr/0051`: CI publishes this to GHCR as ghcr.io/golyakoff/ago-landing, tagged with the
@@ -53,6 +53,11 @@ COPY favicon.ico /usr/share/nginx/html/favicon.ico
 COPY pricing.html /usr/share/nginx/html/pricing.html
 COPY styles.css /usr/share/nginx/html/styles.css
 COPY i18n.js /usr/share/nginx/html/i18n.js
+# `13-10`/`13-11`: the public offer and the requisites page the YooKassa self-payment review checks
+# for. Same reasoning as every other line here - without these two, the image builds successfully and
+# 404s on both pages in production, since nginx serves only what was actually copied in.
+COPY legal/offer.html /usr/share/nginx/html/legal/offer.html
+COPY legal/requisites.html /usr/share/nginx/html/legal/requisites.html
 # `25-171`: the pricing calculator's real channel-icon files (byte-identical to ago-widget's own
 # `25-172` assets) - without this line the image builds successfully and 404s on every icon at
 # runtime, since the calculator references them as plain relative `icons/*.svg` paths.
@@ -69,7 +74,7 @@ COPY home.js /usr/share/nginx/html/home.js
 COPY prices.jso[n] /usr/share/nginx/html/
 # `15-07`: the commit as a file the running container serves, in the same shape as ago-console's and
 # ago-widget's, so smoke.sh and deploy.sh have one question to ask and one answer to parse -
-# `curl https://reserve-me.ru/version.json`. A label is invisible from outside the cluster and an
+# `curl https://agochat.ru/version.json`. A label is invisible from outside the cluster and an
 # image tag is a name somebody chose; this is the copy anyone can read. Deliberately no build
 # timestamp: two builds of one commit should be the same artifact, and a clock is the easiest way to
 # make them differ for no reason.

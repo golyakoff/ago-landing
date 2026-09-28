@@ -1,6 +1,6 @@
 # AGO Landing
 
-The public marketing page for **AGO Chat**, served at the apex of `reserve-me.ru`. Static HTML — no
+The public marketing page for **AGO Chat**, served at the apex of `agochat.ru`. Static HTML — no
 build step, no framework, no bundler — because there is nothing here that needs one: two pages, one
 stylesheet, one script for the bilingual (RU default / EN) toggle.
 
@@ -18,6 +18,8 @@ repos are the right home for a platform-wide marketing page
 
 - `index.html` — the landing page itself.
 - `pricing.html` — the full price list, served at `/pricing` as well as `/pricing.html`.
+- `legal/offer.html` — the public offer (`13-10`), served at `/legal/offer`.
+- `legal/requisites.html` — requisites and contact details (`13-11`), served at `/legal/requisites`.
 - `styles.css` — the design system, shared by both pages.
 - `i18n.js` — the RU/EN dictionary, the language switch, and the price rendering, shared by both.
 - `prices.json` — **optional, and absent from this repository most of the time.** See below.
@@ -61,12 +63,12 @@ with `./deploy.sh landing <sha>` from `ago-deploy/k8s` on the node;
 `ago-deploy/k8s/build-static-images.sh` can still build the same name there for a hotfix, which is
 now the fallback rather than the mechanism.
 
-Routed at the apex `reserve-me.ru` (not a subdomain) via
+Routed at the apex `agochat.ru` (not a subdomain) via
 `ago-deploy/k8s/overlays/demo/landing-static.yaml` and the matching `Gateway`/`HTTPRoute`/
 `Certificate` wiring in `ago-deploy/k8s/overlays/demo/gateway.yaml` and `tls.yaml`.
 
 The image serves `/version.json` — `{"app":"ago-landing","commit":"<sha>"}` — so
-`curl https://reserve-me.ru/version.json` names the deployed commit without cluster access
+`curl https://agochat.ru/version.json` names the deployed commit without cluster access
 (`ago-root/docs/adr/0051-*`). This page takes no build-time configuration at all, which is why its
 SHA tag means one thing with no effort: there is no environment for the image to have been pointed
 at.

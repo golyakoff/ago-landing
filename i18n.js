@@ -23,9 +23,16 @@ var AGO_I18N = {
     'nav.pricing':'What it costs','nav.features':'Features','nav.widget':'The widget','nav.advantages':'Why us',
     'nav.cta':'Start free',
 
+    /* The mobile drawer's own two controls - the hamburger's aria-label (open/closed) and the
+       theme row's short label. Everything else inside the drawer reuses an existing nav or home
+       key; these four are new because nothing already said "just the word Menu" or a bare theme
+       name on its own, short enough for a drawer row rather than a full sentence. */
+    'nav.menu.open':'Open menu','nav.menu.close':'Close menu',
+    'drawer.theme.dark':'Dark theme','drawer.theme.light':'Light theme',
+
     'home.kicker':'Live chat for your site and messengers',
     'home.title':'Every customer conversation <em>from ₽490 a month</em>',
-    'home.lede':'Seven channels, appointment booking, reports and reply suggestions — in one window and on one bill. No “talk to sales”: the price is worked out on the right, and everything switches on inside the account in a minute.',
+    'home.lede':'Four channels, appointment booking, reports and reply suggestions — in one window and on one bill. No “talk to sales”: the price is worked out on the right, and everything switches on inside the account in a minute.',
     'home.cta1':'Work out my price','home.cta2':'Open the live demo ↗',
     'home.fact1.v':'₽0','home.fact1.k':'two operators, forever',
     'home.fact2.k':'channels in one window',
@@ -46,6 +53,7 @@ var AGO_I18N = {
     'home.calc.row.included':'Website chat and email',
     'home.calc.row.channels':'Channels: {list}',
     'home.calc.unpricedtotal':'One of these has no published price, so this cannot be summed. The rest of the bill is above.',
+    'home.calc.soon':'Coming soon: WhatsApp, VK, Avito',
 
     'home.what.kicker':'What the money buys',
     'home.what.title':'The plan changes the scale, not the features',
@@ -89,13 +97,19 @@ var AGO_I18N = {
     'home.mock.slot1':'Thu, 14:00','home.mock.slot2':'Thu, 17:30','home.mock.slot3':'Fri, 11:00',
     'home.mock.book':'Book','home.mock.placeholder':'Type a message…',
 
+    'home.apps.kicker':'Mobile app',
+    'home.apps.title':'AGO Chat in your pocket',
+    'home.apps.body':'The operator console as a native app: answer chats and manage bookings straight from your phone.',
+    'home.apps.android':'Download for Android',
+    'home.apps.ios':'iOS — coming soon',
+
     'home.adv.kicker':'Why us',
     'home.adv.title':'What you get the moment you register',
     'home.adv.lede':'Nothing to buy on top and nothing to install: everything below works from day one, on a free account too.',
     'home.adv.cal.t':'The Calendar module — booking with your specialists',
     'home.adv.cal.b':'Specialists, services and schedules are set up in the same account. A customer books on their own — in the widget on your site and inside the conversation through messenger bots, without going anywhere else or installing an app.',
-    'home.adv1.t':'Seven channels in one queue',
-    'home.adv1.b':'Site, Telegram, WhatsApp, VK, Avito, MAX and email — one operator window instead of seven tabs.',
+    'home.adv1.t':'Four channels in one queue',
+    'home.adv1.b':'Site, Telegram, MAX and email — one operator window instead of four tabs.',
     'home.adv2.t':'Files, search, tags, notes, handover',
     'home.adv2.b':'Everything an operator needs on an ordinary day — no add-ons, no surcharges.',
     'home.adv3.t':'Reports by operator, channel, source and conversion',
@@ -118,13 +132,13 @@ var AGO_I18N = {
 
     'pricing.permonth':'/mo','pricing.from':'from','pricing.free.amount':'₽0',
     'pricing.path.title':'How you actually start',
-    'pricing.path.body':'There is no buy button on this page, deliberately. You register first; then, inside the product, you pick which capabilities to switch on and pay for exactly those, there. Want to look around before any of that? The demo shop hands out a private operator account on the spot — the button below opens one.',
+    'pricing.path.body':'You register first; then, inside the product, you pick which capabilities to switch on and pay for exactly those, there. Want to look around before any of that? The demo shop hands out a private operator account on the spot — the button below opens one.',
     'pricing.cta.demo':'Open the live demo ↗','pricing.cta.full':'Full price list ↗',
 
     'pricingpage.doctitle':'Pricing — AGO Chat',
     'pricingpage.back':'← Back to the main page',
     'pricingpage.title':'What is free, what is paid, and what each item costs.',
-    'pricingpage.lede':'Every rouble figure on this page is a price the product itself has published — not a rounded example, and not a plan we intend to charge one day. Where there is no published price, this page says so instead of guessing.',
+    'pricingpage.lede':'The prices and terms currently in effect for each plan.',
     'pricingpage.compare.title':'Free account vs paid account',
     'pricingpage.compare.body':'The difference is how many people can work in it. The chat itself — the widget, real-time delivery, file attachments — is the same product on both.',
     'pricingpage.compare.col1':'','pricingpage.compare.col2':'Free','pricingpage.compare.col3':'Paid',
@@ -136,16 +150,18 @@ var AGO_I18N = {
     'pricingpage.compare.history.free':'A limited period','pricingpage.compare.history.paid':'A long window',
     'pricingpage.compare.price':'Monthly price',
     'pricingpage.units.title':'What is priced, per unit',
-    'pricingpage.units.body':'Four items, and every figure below is one the product itself has published.',
+    'pricingpage.units.body':'Four items and their prices:',
     'pricingpage.units.col1':'Item','pricingpage.units.col2':'Price','pricingpage.units.col3':'What it covers',
     'pricingpage.units.base':'Base price','pricingpage.units.base.note':'Covers the account and its first 3 operator seats.',
     'pricingpage.units.extra':'Each operator seat past the third','pricingpage.units.extra.note':'Charged once per seat, up to 5 seats in total.',
     'pricingpage.units.admin':'Each administrator past the second','pricingpage.units.admin.note':'Charged once per administrator. Two are included in the base price.',
     'pricingpage.units.channel':'Each connected channel beyond the site',
-    'pricingpage.units.channel.note':'One flat price for any channel — Telegram, MAX, VK, WhatsApp, Avito. The website chat and email are included in every account and are not counted.',
+    'pricingpage.units.channel.note':'One flat price for any channel — Telegram, MAX. The website chat and email are included in every account and are not counted.',
+    'pricingpage.access.title':'How access opens after payment',
+    'pricingpage.access.body':'This is a SaaS service: you register, pick which capabilities to switch on inside the product, pay there, and access activates automatically — no waiting, no manual step on our side. Sign in to the operator console at <code>office.agochat.ru</code>. Delivery is digital only; there is no physical good and nothing is shipped.',
     'pricingpage.unpriced':'No published price',
     'pricingpage.updated':'Prices last published',
-    'pricingpage.fineprint':'All amounts are in roubles, per month, per account. This page reads the prices the product has published; if a figure here is missing, it is because nothing has been published for it — not because it is free.',
+    'pricingpage.fineprint':'All amounts are in roubles, per month, per account. If a price is missing for an item, it has not been published yet — it is not free.',
 
     'footer.login':'Operator login ↗','footer.copy':'© 2026 AGO Chat'
   },
@@ -153,9 +169,12 @@ var AGO_I18N = {
     'nav.pricing':'Сколько стоит','nav.features':'Возможности','nav.widget':'Виджет','nav.advantages':'Преимущества',
     'nav.cta':'Начать бесплатно',
 
+    'nav.menu.open':'Открыть меню','nav.menu.close':'Закрыть меню',
+    'drawer.theme.dark':'Тёмная тема','drawer.theme.light':'Светлая тема',
+
     'home.kicker':'Чат для сайта и мессенджеров',
     'home.title':'Вся переписка с клиентами <em>от 490 ₽ в месяц</em>',
-    'home.lede':'Семь каналов, запись к мастерам, отчёты и подсказки — в одном окне и в одном счёте. Никаких «свяжитесь с отделом продаж»: цена посчитана справа, всё включается в кабинете за минуту.',
+    'home.lede':'Четыре канала, запись к мастерам, отчёты и подсказки — в одном окне и в одном счёте. Никаких «свяжитесь с отделом продаж»: цена посчитана справа, всё включается в кабинете за минуту.',
     'home.cta1':'Посчитать свой тариф','home.cta2':'Открыть живое демо ↗',
     'home.fact1.v':'0 ₽','home.fact1.k':'двое операторов навсегда',
     'home.fact2.k':'каналов в одном окне',
@@ -176,6 +195,7 @@ var AGO_I18N = {
     'home.calc.row.included':'Чат на сайте и почта',
     'home.calc.row.channels':'Каналы: {list}',
     'home.calc.unpricedtotal':'У одной из позиций нет опубликованной цены, поэтому сумму не показываем. Остальной счёт — выше.',
+    'home.calc.soon':'Скоро: WhatsApp, ВКонтакте, Авито',
 
     'home.what.kicker':'Что входит в эти деньги',
     'home.what.title':'Тариф меняет масштаб, а не возможности',
@@ -219,13 +239,19 @@ var AGO_I18N = {
     'home.mock.slot1':'Чт, 14:00','home.mock.slot2':'Чт, 17:30','home.mock.slot3':'Пт, 11:00',
     'home.mock.book':'Записаться','home.mock.placeholder':'Введите сообщение…',
 
+    'home.apps.kicker':'Мобильное приложение',
+    'home.apps.title':'AGO Chat в кармане',
+    'home.apps.body':'Консоль оператора — в виде отдельного приложения: отвечайте на чаты и управляйте записями прямо с телефона.',
+    'home.apps.android':'Скачать для Android',
+    'home.apps.ios':'iOS — скоро',
+
     'home.adv.kicker':'Наши преимущества',
     'home.adv.title':'Что вы получаете сразу после регистрации',
     'home.adv.lede':'Ничего докупать и доустанавливать не нужно: всё перечисленное работает с первого дня, на бесплатном аккаунте тоже.',
     'home.adv.cal.t':'Модуль «Календарь» — запись к мастерам',
     'home.adv.cal.b':'Мастера, услуги и расписание настраиваются в том же кабинете. Клиент записывается сам — и в виджете на сайте, и прямо в переписке через боты в мессенджерах, не переходя никуда и не скачивая приложение.',
-    'home.adv1.t':'Семь каналов в одной очереди',
-    'home.adv1.b':'Сайт, Telegram, WhatsApp, ВКонтакте, Авито, MAX и почта — одно окно оператора вместо семи вкладок.',
+    'home.adv1.t':'Четыре канала в одной очереди',
+    'home.adv1.b':'Сайт, Telegram, MAX и почта — одно окно оператора вместо четырёх вкладок.',
     'home.adv2.t':'Файлы, поиск, теги, заметки, передача диалога',
     'home.adv2.b':'Всё, что нужно оператору в обычный рабочий день, — без доплат и надстроек.',
     'home.adv3.t':'Отчёты по операторам, каналам, источникам и конверсии',
@@ -248,13 +274,13 @@ var AGO_I18N = {
 
     'pricing.permonth':'/мес','pricing.from':'от','pricing.free.amount':'0 ₽',
     'pricing.path.title':'Как это начинается на самом деле',
-    'pricing.path.body':'Кнопки «купить» на этой странице нет — намеренно. Сначала регистрация, а дальше уже внутри продукта вы выбираете, какие возможности подключить, и оплачиваете именно их — там же. Хотите сперва посмотреть? Демо-магазин выдаёт приватный аккаунт оператора сразу — кнопка ниже как раз туда.',
+    'pricing.path.body':'Сначала регистрация, а дальше уже внутри продукта вы выбираете, какие возможности подключить, и оплачиваете именно их — там же. Хотите сперва посмотреть? Демо-магазин выдаёт приватный аккаунт оператора сразу — кнопка ниже как раз туда.',
     'pricing.cta.demo':'Открыть живое демо ↗','pricing.cta.full':'Все цены ↗',
 
     'pricingpage.doctitle':'Цены — AGO Chat',
     'pricingpage.back':'← На главную',
     'pricingpage.title':'Что бесплатно, что платно и сколько стоит каждая позиция.',
-    'pricingpage.lede':'Каждая сумма на этой странице — цена, которую продукт действительно опубликовал: не округлённый пример и не план когда-нибудь столько брать. Там, где опубликованной цены нет, страница так и пишет, а не придумывает.',
+    'pricingpage.lede':'Цены и условия, которые сейчас действуют для каждого тарифа.',
     'pricingpage.compare.title':'Бесплатный аккаунт и платный',
     'pricingpage.compare.body':'Разница — в том, сколько людей в нём работает. Сам чат — виджет, доставка в реальном времени, вложения — на обоих один и тот же.',
     'pricingpage.compare.col1':'','pricingpage.compare.col2':'Бесплатно','pricingpage.compare.col3':'Платно',
@@ -266,16 +292,18 @@ var AGO_I18N = {
     'pricingpage.compare.history.free':'Ограниченный период','pricingpage.compare.history.paid':'Длинное окно',
     'pricingpage.compare.price':'Цена в месяц',
     'pricingpage.units.title':'Что стоит денег, по единицам',
-    'pricingpage.units.body':'Четыре позиции, и каждая цена ниже — та, которую опубликовал сам продукт.',
+    'pricingpage.units.body':'Четыре позиции и их цены:',
     'pricingpage.units.col1':'Позиция','pricingpage.units.col2':'Цена','pricingpage.units.col3':'Что входит',
     'pricingpage.units.base':'Базовая цена','pricingpage.units.base.note':'Покрывает аккаунт и первые 3 операторских места.',
     'pricingpage.units.extra':'Каждое операторское место сверх третьего','pricingpage.units.extra.note':'Считается по одному за место, всего до 5 мест.',
     'pricingpage.units.admin':'Каждый администратор сверх второго','pricingpage.units.admin.note':'Считается по одному за администратора. Два включены в базовую цену.',
     'pricingpage.units.channel':'Каждый подключённый канал сверх сайта',
-    'pricingpage.units.channel.note':'Одна цена на любой канал — Telegram, MAX, ВКонтакте, WhatsApp, Авито. Чат на сайте и почта включены в любой аккаунт и не считаются.',
+    'pricingpage.units.channel.note':'Одна цена на любой канал — Telegram, MAX. Чат на сайте и почта включены в любой аккаунт и не считаются.',
+    'pricingpage.access.title':'Как открывается доступ после оплаты',
+    'pricingpage.access.body':'Это SaaS-сервис: регистрация → выбор возможностей внутри продукта → оплата там же → доступ активируется автоматически, без ожидания и без ручных действий с нашей стороны. Вход в консоль оператора — <code>office.agochat.ru</code>. Доставка цифровая: физического товара и почтовой отправки нет.',
     'pricingpage.unpriced':'Цена не опубликована',
     'pricingpage.updated':'Цены опубликованы',
-    'pricingpage.fineprint':'Все суммы — в рублях, за месяц, за аккаунт. Страница показывает цены, которые опубликовал сам продукт; если суммы здесь нет, значит по этой позиции ничего не опубликовано, — а не значит, что она бесплатна.',
+    'pricingpage.fineprint':'Все суммы — в рублях, за месяц, за аккаунт. Если цены на позицию здесь нет — значит, она пока не опубликована, а не бесплатна.',
 
     'footer.login':'Вход для оператора ↗','footer.copy':'© 2026 AGO Chat'
   }
@@ -413,14 +441,34 @@ function agoCurrentTheme(){
 function agoPaintThemeToggle(){
   var btn = document.getElementById('themeToggle');
   var icon = document.getElementById('themeIcon');
-  if (!btn || !icon) return;
+  if (btn && icon){
+    var dict = AGO_I18N[agoCurrentLang()] || AGO_I18N.ru;
+    var isDark = agoCurrentTheme() === 'dark';
+    /* The icon names the theme a click switches *to*, not the one in effect. */
+    icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+    var label = isDark ? dict['home.theme.light'] : dict['home.theme.dark'];
+    btn.setAttribute('aria-label', label);
+    btn.title = label;
+  }
+  /* The mobile drawer's own theme row mirrors the same state - repainted from here so a language
+     switch or a theme change from *either* control (the header button or the drawer row) keeps both
+     in step, without the drawer needing to know anything beyond "repaint me". */
+  agoPaintDrawerTheme();
+}
+
+/* The drawer's theme row: an icon + a short label ("Тёмная тема"/"Светлая тема"), rather than the
+   header toggle's icon-only button - a drawer row reads as a list item, so it needs the word next to
+   the icon the way the header's own space-constrained button never did. Same "names the target, not
+   the current state" convention as `agoPaintThemeToggle` above. A no-op on any page that has no
+   drawer markup (there is none today, but the two pages share this file regardless). */
+function agoPaintDrawerTheme(){
+  var icon = document.getElementById('drawerThemeIcon');
+  var label = document.getElementById('drawerThemeLabel');
+  if (!icon || !label) return;
   var dict = AGO_I18N[agoCurrentLang()] || AGO_I18N.ru;
   var isDark = agoCurrentTheme() === 'dark';
-  /* The icon names the theme a click switches *to*, not the one in effect. */
   icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-  var label = isDark ? dict['home.theme.light'] : dict['home.theme.dark'];
-  btn.setAttribute('aria-label', label);
-  btn.title = label;
+  label.textContent = isDark ? dict['drawer.theme.light'] : dict['drawer.theme.dark'];
 }
 
 function agoSetTheme(theme){
@@ -465,4 +513,70 @@ function agoSetTheme(theme){
       })
       .catch(function(){ /* nothing left to do: the page already reads correctly without prices */ });
   }
+})();
+
+/* ---- mobile menu drawer -------------------------------------------------- *
+ * The header's nav links, CTA and theme toggle collapse into a left-sliding
+ * drawer under the `max-width:900px` breakpoint styles.css already uses to
+ * hide `.nav-links`. One script wires all four pages: the markup (and its nav
+ * targets, which differ by page - `#calc` on index.html vs `index.html#calc`
+ * on pricing.html vs `/index.html#calc` on the two nested legal pages) lives
+ * in each page's own HTML; this is only ever "open/close/Esc/theme-row-click",
+ * identical everywhere. A no-op wherever the three elements it needs are
+ * absent, which never happens today but keeps this file safe to include
+ * unconditionally regardless. */
+(function(){
+  var toggle = document.getElementById('menuToggle');
+  var drawer = document.getElementById('mobileDrawer');
+  var backdrop = document.getElementById('drawerBackdrop');
+  if (!toggle || !drawer || !backdrop) return;
+
+  function dict(){ return AGO_I18N[agoCurrentLang()] || AGO_I18N.ru; }
+
+  function openDrawer(){
+    drawer.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    backdrop.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', dict()['nav.menu.close']);
+    drawer.setAttribute('aria-hidden', 'false');
+    /* Prevents the page behind the drawer from scrolling while it is open - restored on close. */
+    document.body.style.overflow = 'hidden';
+    var firstFocusable = drawer.querySelector('a,button');
+    if (firstFocusable) firstFocusable.focus();
+  }
+
+  function closeDrawer(){
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', dict()['nav.menu.open']);
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    backdrop.hidden = true;
+    toggle.focus();
+  }
+
+  function isOpen(){ return drawer.classList.contains('is-open'); }
+
+  toggle.setAttribute('aria-label', dict()['nav.menu.open']);
+  toggle.addEventListener('click', function(){ isOpen() ? closeDrawer() : openDrawer(); });
+  backdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && isOpen()) closeDrawer();
+  });
+  /* A tap on any real nav link should close the drawer on its way to the target, not leave it open
+     over whatever the link navigated to (an in-page anchor never reloads the document, so nothing
+     else would ever close it). */
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeDrawer);
+  });
+
+  var drawerTheme = document.getElementById('drawerThemeToggle');
+  if (drawerTheme){
+    drawerTheme.addEventListener('click', function(){
+      agoSetTheme(agoCurrentTheme() === 'dark' ? 'light' : 'dark');
+    });
+  }
+  agoPaintDrawerTheme();
 })();
