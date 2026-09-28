@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <!-- Exact gradient colors read live from https://brandbook.reserve-me.ru/logo.html's own .g
+    <!-- Exact gradient colors read live from https://brandbook.agochat.ru/logo.html's own .g
          element (getComputedStyle: linear-gradient(140deg, rgb(76,141,255), rgb(157,107,255))) -
          the same pair ago-landing/styles.css already names as its blue/violet custom properties
          in .brand .g. -->
